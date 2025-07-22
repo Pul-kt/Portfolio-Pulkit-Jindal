@@ -303,7 +303,7 @@ class TypingAnimation {
     this.isDeleting = false;
     this.typeSpeed = 100;
     this.deleteSpeed = 50;
-    this.pauseTime = 2000;
+    this.pauseTime = 1000;
 
     if (this.element) {
       this.init();
