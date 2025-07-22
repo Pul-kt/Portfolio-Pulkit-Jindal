@@ -292,12 +292,11 @@ class AnimationManager {
 // Typing Animation for Hero Section
 class TypingAnimation {
   constructor() {
-    this.element = document.querySelector('.title-role');
     this.texts = [
-      'Full Stack Developer',
-      'Backend Engineer',
+      'Software Engineer',
+      'Backend Developer',
       'Problem Solver',
-      'Innovation Enthusiast'
+      'Tech Enthusiast'
     ];
     this.currentIndex = 0;
     this.currentText = '';
