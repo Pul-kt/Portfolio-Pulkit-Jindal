@@ -907,4 +907,3 @@ class PerformantScrollHandler {
     }, { passive: true });
   }
 }
-
