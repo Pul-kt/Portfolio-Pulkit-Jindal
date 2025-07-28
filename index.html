@@ -1,35 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pulkit Jindal - Full Stack Developer</title>
-    <meta name="description" content="Pulkit Jindal - Full Stack Developer specializing in Node.js, React, and scalable backend systems">
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Meta tags for SEO -->
+    <meta name="description" content="Pulkit Jindal - Full Stack Developer specializing in scalable web applications, backend systems, and modern JavaScript technologies.">
+    <meta name="keywords" content="Full Stack Developer, Web Developer, JavaScript, Node.js, React, MongoDB, Backend Developer">
+    <meta name="author" content="Pulkit Jindal">
+    
+    <!-- Open Graph tags -->
+    <meta property="og:title" content="Pulkit Jindal - Full Stack Developer">
+    <meta property="og:description" content="Passionate Full Stack Developer creating exceptional digital experiences through clean code and innovative solutions.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://pulkitjindal.dev">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
+    <nav class="navbar" id="navbar">
+        <div class="nav-container container">
             <div class="nav-logo">
-                <span class="logo-text">Pulkit</span>
-                <span class="logo-accent">.</span>
+                <span class="logo-text">Pulkit</span><span class="logo-accent">.</span>
             </div>
-            <ul class="nav-menu">
-                <li><a href="#home" class="nav-link">Home</a></li>
+            
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="nav-link active">Home</a></li>
                 <li><a href="#about" class="nav-link">About</a></li>
                 <li><a href="#projects" class="nav-link">Projects</a></li>
                 <li><a href="#skills" class="nav-link">Skills</a></li>
                 <li><a href="#experience" class="nav-link">Experience</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
+            
             <div class="nav-actions">
-                <button class="theme-toggle" id="themeToggle">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
                     <i class="fas fa-moon"></i>
                 </button>
+                
                 <div class="hamburger" id="hamburger">
                     <span></span>
                     <span></span>
@@ -39,124 +62,123 @@
         </div>
     </nav>
 
+    <!-- Social Sidebar -->
+    <aside class="social-sidebar">
+        <a href="https://github.com/Pul-kt" target="_blank" rel="noopener" class="social-link">
+            <i class="fab fa-github"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/pulkitjindal30/" target="_blank" rel="noopener" class="social-link">
+            <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="https://leetcode.com/u/_pullkit_jindal/" target="_blank" rel="noopener" class="social-link">
+            <i class="fas fa-code"></i>
+        </a>
+        <div class="social-line"></div>
+    </aside>
+
     <!-- Hero Section -->
     <section id="home" class="hero">
-        <div class="hero-container">
-            <div class="hero-content">
-                <div class="hero-badge">
-                    <span>👋 Available for opportunities</span>
+        <div class="container">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <div class="hero-badge">
+                        <span class="status-indicator">🟢</span>
+                        Available for opportunities
+                    </div>
+                    
+                    <h1 class="hero-title">
+                        <span class="title-line">Hi, I'm</span>
+                        <span class="title-name">Pulkit Jindal</span>
+                        <span class="title-role">Software Engineer</span>
+                    </h1>
+                    
+                    <p class="hero-description">
+                        I craft exceptional digital experiences through clean code and 
+                        innovative solutions. Currently pursuing Electrical Engineering 
+                        at DTU while building scalable web applications that solve real-world problems.
+                    </p>
+                    
+                    <div class="hero-stats">
+                        <div class="stat-card">
+                            <span class="stat-number">300+</span>
+                            <span class="stat-label">LeetCode Solved</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-number">10+</span>
+                            <span class="stat-label">APIs Built</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-number">25%</span>
+                            <span class="stat-label">Performance Boost</span>
+                        </div>
+                    </div>
+                    
+                    <div class="hero-actions">
+                        <a href="#projects" class="btn btn-primary">
+                            <i class="fas fa-eye"></i>
+                            View My Work
+                        </a>
+                        <a href="#contact" class="btn btn-secondary">
+                            <i class="fas fa-phone"></i>
+                            Get In Touch
+                        </a>
+                    </div>
                 </div>
                 
-                <h1 class="hero-title">
-                    <span class="title-line">Hi, I'm</span>
-                    <span class="title-name">Pulkit Jindal</span>
-                    <span class="title-role">Software Engineer</span>
-                </h1>
-                
-                <p class="hero-description">
-                    I craft exceptional digital experiences through clean code and innovative solutions. 
-                    Currently pursuing Electrical Engineering at DTU while building scalable web applications 
-                    that solve real-world problems.
-                </p>
-                
-                <div class="hero-stats">
-                    <div class="stat-card">
-                        <div class="stat-number">300+</div>
-                        <div class="stat-label">LeetCode Solved</div>
+                <div class="hero-visual">
+                    <div class="code-block">
+                        <div class="code-header">
+                            <div class="code-dots">
+                                <div class="dot red"></div>
+                                <div class="dot yellow"></div>
+                                <div class="dot green"></div>
+                            </div>
+                            <span class="code-title">developer.js</span>
+                        </div>
+                        <div class="code-content">
+                            <div class="code-line">
+                                <span class="line-num">01</span>
+                                <span class="code-text">
+                                    <span class="keyword">const</span> 
+                                    <span class="variable">developer</span> = {
+                                </span>
+                            </div>
+                            <div class="code-line">
+                                <span class="line-num">02</span>
+                                <span class="code-text">
+                                    &nbsp;&nbsp;<span class="property">name:</span> 
+                                    <span class="string">'Pulkit Jindal'</span>,
+                                </span>
+                            </div>
+                            <div class="code-line">
+                                <span class="line-num">03</span>
+                                <span class="code-text">
+                                    &nbsp;&nbsp;<span class="property">skills:</span> 
+                                    [<span class="string">'React'</span>, <span class="string">'Node.js'</span>],
+                                </span>
+                            </div>
+                            <div class="code-line">
+                                <span class="line-num">04</span>
+                                <span class="code-text">
+                                    &nbsp;&nbsp;<span class="property">location:</span> 
+                                    <span class="string">'Delhi, India'</span>,
+                                </span>
+                            </div>
+                            <div class="code-line">
+                                <span class="line-num">05</span>
+                                <span class="code-text">
+                                    &nbsp;&nbsp;<span class="property">passion:</span> 
+                                    <span class="string">'Building Amazing Apps'</span>
+                                </span>
+                            </div>
+                            <div class="code-line">
+                                <span class="line-num">06</span>
+                                <span class="code-text">};</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="stat-card">
-                        <div class="stat-number">10+</div>
-                        <div class="stat-label">APIs Built</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-number">25%</div>
-                        <div class="stat-label">Performance Boost</div>
-                    </div>
-                </div>
-                
-                <div class="hero-actions">
-                    <a href="#projects" class="btn btn-primary">
-                        <span>View My Work</span>
-                        <i class="fas fa-arrow-right"></i>
-                    </a>
-                    <a href="#contact" class="btn btn-secondary">
-                        <i class="fas fa-envelope"></i>
-                        <span>Get In Touch</span>
-                    </a>
                 </div>
             </div>
-            
-            <div class="hero-visual">
-                <div class="code-block">
-                    <div class="code-header">
-                        <div class="code-dots">
-                            <span class="dot red"></span>
-                            <span class="dot yellow"></span>
-                            <span class="dot green"></span>
-                        </div>
-                        <span class="code-title">developer.js</span>
-                    </div>
-                    <div class="code-content">
-                        <div class="code-line">
-                            <span class="line-num">01</span>
-                            <span class="code-text">
-                                <span class="keyword">const</span> 
-                                <span class="variable">developer</span> = {
-                            </span>
-                        </div>
-                        <div class="code-line">
-                            <span class="line-num">02</span>
-                            <span class="code-text">
-                                &nbsp;&nbsp;<span class="property">name</span>: 
-                                <span class="string">'Pulkit Jindal'</span>,
-                            </span>
-                        </div>
-                        <div class="code-line">
-                            <span class="line-num">03</span>
-                            <span class="code-text">
-                                &nbsp;&nbsp;<span class="property">skills</span>: [
-                                <span class="string">'React'</span>, 
-                                <span class="string">'Node.js'</span>],
-                            </span>
-                        </div>
-                        <div class="code-line">
-                            <span class="line-num">04</span>
-                            <span class="code-text">
-                                &nbsp;&nbsp;<span class="property">location</span>: 
-                                <span class="string">'Delhi, India'</span>,
-                            </span>
-                        </div>
-                        <div class="code-line">
-                            <span class="line-num">05</span>
-                            <span class="code-text">
-                                &nbsp;&nbsp;<span class="property">passion</span>: 
-                                <span class="string">'Building Amazing Apps'</span>
-                            </span>
-                        </div>
-                        <div class="code-line">
-                            <span class="line-num">06</span>
-                            <span class="code-text">};</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Social Links -->
-        <div class="social-sidebar">
-            <a href="https://github.com/Pul-kt" target="_blank" class="social-link">
-                <i class="fab fa-github"></i>
-            </a>
-            <a href="https://www.linkedin.com/in/pulkitjindal30/" target="_blank" class="social-link">
-                <i class="fab fa-linkedin-in"></i>
-            </a>
-            <a href="https://leetcode.com/u/_pullkit_jindal/" target="_blank" class="social-link">
-                <i class="fas fa-code"></i>
-            </a>
-            <a href="mailto:pulkit.jindal30@gmail.com" class="social-link">
-                <i class="fas fa-envelope"></i>
-            </a>
-            <div class="social-line"></div>
         </div>
     </section>
 
@@ -173,71 +195,73 @@
                 <div class="about-content">
                     <div class="about-text">
                         <p class="lead">
-                            I'm a passionate Full Stack Developer currently pursuing my Bachelor's in 
-                            <strong>Electrical Engineering</strong> at Delhi Technological University. 
+                            I'm a passionate <strong>Full Stack Developer</strong> currently pursuing my Bachelor's in 
+                            <strong>Electrical Engineering</strong> at Delhi Technological University.
+                        </p>
+                        
+                        <p>
                             What started as curiosity about how things work has evolved into a love for 
                             creating digital experiences that make a difference.
                         </p>
                         
                         <p>
-                            My journey spans from optimizing server performance by <strong>25%</strong> to building 
-                            real-time applications that support <strong>100+ concurrent users</strong>. I believe 
+                            My journey spans from optimizing server performance by 
+                            <strong>25%</strong> to building real-time applications that support <strong>100+ concurrent users</strong>. I believe 
                             in writing clean, maintainable code and creating solutions that not only work 
                             but work beautifully.
                         </p>
                         
                         <p>
-                            When I'm not coding, you'll find me solving algorithmic challenges on LeetCode 
-                            (300+ problems solved!), contributing to open-source projects, or exploring 
-                            the latest in web technologies.
+                            When I'm not coding, you'll find me solving algorithmic challenges on LeetCode (300+ problems solved!), 
+                            contributing to open-source projects, or exploring the latest in web technologies.
                         </p>
                     </div>
                     
                     <div class="tech-grid">
                         <h4>Technologies I work with:</h4>
                         <div class="tech-list">
-                            <span class="tech-item">JavaScript (ES6+)</span>
-                            <span class="tech-item">React.js</span>
-                            <span class="tech-item">Node.js</span>
-                            <span class="tech-item">Express.js</span>
-                            <span class="tech-item">MongoDB</span>
-                            <span class="tech-item">C++</span>
-                            <span class="tech-item">Python</span>
-                            <span class="tech-item">AWS</span>
-                            <span class="tech-item">Docker</span>
-                            <span class="tech-item">Git</span>
-                            <span class="tech-item">Socket.IO</span>
-                            <span class="tech-item">Linux</span>
+                            <div class="tech-item">JavaScript</div>
+                            <div class="tech-item">TypeScript</div>
+                            <div class="tech-item">React</div>
+                            <div class="tech-item">Node.js</div>
+                            <div class="tech-item">Express</div>
+                            <div class="tech-item">MongoDB</div>
+                            <div class="tech-item">PostgreSQL</div>
+                            <div class="tech-item">Docker</div>
+                            <div class="tech-item">AWS</div>
+                            <div class="tech-item">Git</div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="about-visual">
-                    <div class="profile-card">
-                        <div class="profile-header">
-                            <div class="profile-avatar">
-                                <i class="fas fa-user"></i>
-                            </div>
-                            <div class="profile-info">
-                                <h3>Pulkit Jindal</h3>
-                                <p>Full Stack Developer</p>
-                                <span class="profile-status">🟢 Available for work</span>
-                            </div>
+                <div class="profile-card">
+                    <div class="profile-header">
+                        <div class="profile-avatar">
+                            <i class="fas fa-user-astronaut"></i>
                         </div>
-                        
-                        <div class="profile-stats">
-                            <div class="profile-stat">
-                                <span class="stat-label">Location</span>
-                                <span class="stat-value">Delhi, India</span>
-                            </div>
-                            <div class="profile-stat">
-                                <span class="stat-label">Experience</span>
-                                <span class="stat-value">2+ Years</span>
-                            </div>
-                            <div class="profile-stat">
-                                <span class="stat-label">Education</span>
-                                <span class="stat-value">DTU</span>
-                            </div>
+                        <div class="profile-info">
+                            <h3>Pulkit Jindal</h3>
+                            <p>Full Stack Developer</p>
+                            <p class="profile-status">🟢 Available for work</p>
+                        </div>
+                    </div>
+                    
+                    <div class="profile-stats">
+                        <div class="profile-stat">
+                            <span class="stat-label">Experience</span>
+                            <span class="stat-value">2+ Years</span>
+                        </div>
+                        <div class="profile-stat">
+                            <span class="stat-label">Projects</span>
+                            <span class="stat-value">15+ Completed</span>
+                        </div>
+                        <div class="profile-stat">
+                            <span class="stat-label">Technologies</span>
+                            <span class="stat-value">10+ Mastered</span>
+                        </div>
+                        <div class="profile-stat">
+                            <span class="stat-label">Coffee Consumed</span>
+                            <span class="stat-value">∞</span>
                         </div>
                     </div>
                 </div>
@@ -258,26 +282,26 @@
                 <!-- Featured Project -->
                 <div class="project-card featured">
                     <div class="project-image">
+                        <div class="project-placeholder">
+                            <i class="fas fa-chess"></i>
+                        </div>
                         <div class="project-overlay">
                             <div class="overlay-content">
                                 <div class="project-links">
-                                    <a href="https://github.com/Pul-kt" target="_blank" class="project-link">
-                                        <i class="fab fa-github"></i>
-                                    </a>
-                                    <a href="#" class="project-link">
+                                    <a href="#" class="project-link" title="View Live">
                                         <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                    <a href="#" class="project-link" title="View Code">
+                                        <i class="fab fa-github"></i>
                                     </a>
                                 </div>
                             </div>
                         </div>
-                        <div class="project-placeholder">
-                            <i class="fas fa-chess-king"></i>
-                        </div>
                     </div>
                     
                     <div class="project-info">
-                        <div class="project-category">Real-time Application</div>
-                        <h3 class="project-title">Multiplayer Chess Game</h3>
+                        <div class="project-category">Featured Project</div>
+                        <h3 class="project-title">Real-Time Chess Platform</h3>
                         <p class="project-description">
                             A sophisticated real-time multiplayer chess platform built with WebSocket technology. 
                             Features instant game synchronization, spectator mode, and optimized performance 
@@ -285,138 +309,97 @@
                         </p>
                         
                         <div class="project-tech">
+                            <span class="tech-tag">React</span>
                             <span class="tech-tag">Node.js</span>
-                            <span class="tech-tag">Socket.IO</span>
-                            <span class="tech-tag">Express.js</span>
-                            <span class="tech-tag">Chess.js</span>
+                            <span class="tech-tag">Socket.io</span>
+                            <span class="tech-tag">MongoDB</span>
+                            <span class="tech-tag">Docker</span>
                         </div>
                         
                         <div class="project-highlight">
                             <i class="fas fa-users"></i>
-                            <span>100+ Concurrent Players Supported</span>
+                            Supports 100+ concurrent users
                         </div>
                     </div>
                 </div>
-
-                <!-- Project 2 -->
+                
+                <!-- Regular Projects -->
                 <div class="project-card">
                     <div class="project-image">
+                        <div class="project-placeholder">
+                            <i class="fas fa-calculator"></i>
+                        </div>
                         <div class="project-overlay">
                             <div class="overlay-content">
                                 <div class="project-links">
-                                    <a href="https://github.com/Pul-kt" target="_blank" class="project-link">
-                                        <i class="fab fa-github"></i>
-                                    </a>
-                                    <a href="#" class="project-link">
+                                    <a href="#" class="project-link" title="View Live">
                                         <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                    <a href="#" class="project-link" title="View Code">
+                                        <i class="fab fa-github"></i>
                                     </a>
                                 </div>
                             </div>
                         </div>
-                        <div class="project-placeholder">
-                            <i class="fas fa-calculator"></i>
-                        </div>
                     </div>
                     
                     <div class="project-info">
-                        <div class="project-category">Algorithm Optimization</div>
-                        <h3 class="project-title">SplitShare - Expense Splitting</h3>
+                        <div class="project-category">Web Application</div>
+                        <h3 class="project-title">Smart Expense Tracker</h3>
                         <p class="project-description">
                             Advanced expense-sharing platform with optimized debt settlement algorithm. 
                             Reduced computational complexity from O(n²) to O(n) using greedy algorithms.
                         </p>
                         
                         <div class="project-tech">
-                            <span class="tech-tag">C++</span>
-                            <span class="tech-tag">Algorithms</span>
-                            <span class="tech-tag">OOP</span>
-                            <span class="tech-tag">Design Patterns</span>
-                        </div>
-                        
-                        <div class="project-highlight">
-                            <i class="fas fa-tachometer-alt"></i>
-                            <span>O(n²) to O(n) Optimization</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 3 -->
-                <div class="project-card">
-                    <div class="project-image">
-                        <div class="project-overlay">
-                            <div class="overlay-content">
-                                <div class="project-links">
-                                    <a href="https://github.com/Pul-kt" target="_blank" class="project-link">
-                                        <i class="fab fa-github"></i>
-                                    </a>
-                                    <a href="#" class="project-link">
-                                        <i class="fas fa-external-link-alt"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="project-placeholder">
-                            <i class="fas fa-cloud"></i>
-                        </div>
-                    </div>
-                    
-                    <div class="project-info">
-                        <div class="project-category">Backend Infrastructure</div>
-                        <h3 class="project-title">Scalable API Infrastructure</h3>
-                        <p class="project-description">
-                            Engineered 10+ RESTful APIs with MongoDB integration, deployed via Docker 
-                            containers on AWS EC2 instances for high-performance applications.
-                        </p>
-                        
-                        <div class="project-tech">
-                            <span class="tech-tag">Node.js</span>
-                            <span class="tech-tag">MongoDB</span>
-                            <span class="tech-tag">Docker</span>
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Express</span>
+                            <span class="tech-tag">PostgreSQL</span>
                             <span class="tech-tag">AWS</span>
                         </div>
                         
                         <div class="project-highlight">
-                            <i class="fas fa-rocket"></i>
-                            <span>10+ RESTful APIs Deployed</span>
+                            <i class="fas fa-chart-line"></i>
+                            O(n) algorithm optimization
                         </div>
                     </div>
                 </div>
-
-                <!-- Project 4 -->
+                
                 <div class="project-card">
                     <div class="project-image">
+                        <div class="project-placeholder">
+                            <i class="fas fa-server"></i>
+                        </div>
                         <div class="project-overlay">
                             <div class="overlay-content">
                                 <div class="project-links">
-                                    <a href="https://github.com/Pul-kt" target="_blank" class="project-link">
+                                    <a href="#" class="project-link" title="View Code">
                                         <i class="fab fa-github"></i>
                                     </a>
                                 </div>
                             </div>
                         </div>
-                        <div class="project-placeholder">
-                            <i class="fas fa-chart-line"></i>
-                        </div>
                     </div>
                     
                     <div class="project-info">
-                        <div class="project-category">Performance Optimization</div>
-                        <h3 class="project-title">System Performance Suite</h3>
+                        <div class="project-category">Backend System</div>
+                        <h3 class="project-title">Scalable API Infrastructure</h3>
                         <p class="project-description">
-                            Enhanced server-side performance by 25% through advanced Node.js optimization 
-                            techniques, caching strategies, and efficient query optimization.
+                            Engineered 10+ RESTful APIs with MongoDB integration, deployed via Docker containers 
+                            on AWS EC2 instances for high-performance applications.
                         </p>
                         
                         <div class="project-tech">
                             <span class="tech-tag">Node.js</span>
-                            <span class="tech-tag">Express.js</span>
-                            <span class="tech-tag">Performance</span>
-                            <span class="tech-tag">Caching</span>
+                            <span class="tech-tag">Express</span>
+                            <span class="tech-tag">MongoDB</span>
+                            <span class="tech-tag">Docker</span>
+                            <span class="tech-tag">AWS EC2</span>
                         </div>
                         
                         <div class="project-highlight">
-                            <i class="fas fa-bolt"></i>
-                            <span>25% Performance Improvement</span>
+                            <i class="fas fa-rocket"></i>
+                            25% performance improvement
                         </div>
                     </div>
                 </div>
@@ -440,15 +423,16 @@
                             <i class="fas fa-laptop-code"></i>
                         </div>
                         <h3 class="category-title">Frontend Development</h3>
+                        
                         <div class="skills-list">
                             <div class="skill-item">
                                 <div class="skill-info">
                                     <i class="fab fa-react"></i>
-                                    <span>React.js</span>
+                                    <span>React</span>
                                 </div>
                                 <div class="skill-level">
                                     <div class="level-bar">
-                                        <div class="level-fill" style="width: 85%"></div>
+                                        <div class="level-fill" style="width: 90%"></div>
                                     </div>
                                 </div>
                             </div>
@@ -460,7 +444,7 @@
                                 </div>
                                 <div class="skill-level">
                                     <div class="level-bar">
-                                        <div class="level-fill" style="width: 90%"></div>
+                                        <div class="level-fill" style="width: 95%"></div>
                                     </div>
                                 </div>
                             </div>
@@ -484,18 +468,19 @@
                                 </div>
                                 <div class="skill-level">
                                     <div class="level-bar">
-                                        <div class="level-fill" style="width: 88%"></div>
+                                        <div class="level-fill" style="width: 90%"></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
+                    
                     <div class="skill-category">
                         <div class="category-icon">
                             <i class="fas fa-server"></i>
                         </div>
                         <h3 class="category-title">Backend Development</h3>
+                        
                         <div class="skills-list">
                             <div class="skill-item">
                                 <div class="skill-info">
@@ -504,7 +489,7 @@
                                 </div>
                                 <div class="skill-level">
                                     <div class="level-bar">
-                                        <div class="level-fill" style="width: 92%"></div>
+                                        <div class="level-fill" style="width: 90%"></div>
                                     </div>
                                 </div>
                             </div>
@@ -516,15 +501,48 @@
                                 </div>
                                 <div class="skill-level">
                                     <div class="level-bar">
-                                        <div class="level-fill" style="width: 88%"></div>
+                                        <div class="level-fill" style="width: 85%"></div>
                                     </div>
                                 </div>
                             </div>
                             
                             <div class="skill-item">
                                 <div class="skill-info">
-                                    <i class="fas fa-plug"></i>
-                                    <span>REST APIs</span>
+                                    <i class="fas fa-database"></i>
+                                    <span>MongoDB</span>
+                                </div>
+                                <div class="skill-level">
+                                    <div class="level-bar">
+                                        <div class="level-fill" style="width: 80%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <i class="fas fa-database"></i>
+                                    <span>PostgreSQL</span>
+                                </div>
+                                <div class="skill-level">
+                                    <div class="level-bar">
+                                        <div class="level-fill" style="width: 75%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <div class="category-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <h3 class="category-title">Tools & Technologies</h3>
+                        
+                        <div class="skills-list">
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <i class="fab fa-git-alt"></i>
+                                    <span>Git</span>
                                 </div>
                                 <div class="skill-level">
                                     <div class="level-bar">
@@ -535,40 +553,8 @@
                             
                             <div class="skill-item">
                                 <div class="skill-info">
-                                    <i class="fas fa-network-wired"></i>
-                                    <span>Socket.IO</span>
-                                </div>
-                                <div class="skill-level">
-                                    <div class="level-bar">
-                                        <div class="level-fill" style="width: 85%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="skill-category">
-                        <div class="category-icon">
-                            <i class="fas fa-database"></i>
-                        </div>
-                        <h3 class="category-title">Database & Cloud</h3>
-                        <div class="skills-list">
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <i class="fas fa-leaf"></i>
-                                    <span>MongoDB</span>
-                                </div>
-                                <div class="skill-level">
-                                    <div class="level-bar">
-                                        <div class="level-fill" style="width: 85%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <i class="fas fa-database"></i>
-                                    <span>SQL</span>
+                                    <i class="fab fa-docker"></i>
+                                    <span>Docker</span>
                                 </div>
                                 <div class="skill-level">
                                     <div class="level-bar">
@@ -591,68 +577,12 @@
                             
                             <div class="skill-item">
                                 <div class="skill-info">
-                                    <i class="fab fa-docker"></i>
-                                    <span>Docker</span>
-                                </div>
-                                <div class="skill-level">
-                                    <div class="level-bar">
-                                        <div class="level-fill" style="width: 78%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="skill-category">
-                        <div class="category-icon">
-                            <i class="fas fa-tools"></i>
-                        </div>
-                        <h3 class="category-title">Programming & Tools</h3>
-                        <div class="skills-list">
-                            <div class="skill-item">
-                                <div class="skill-info">
                                     <i class="fas fa-code-branch"></i>
-                                    <span>C++</span>
+                                    <span>CI/CD</span>
                                 </div>
                                 <div class="skill-level">
                                     <div class="level-bar">
-                                        <div class="level-fill" style="width: 88%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <i class="fab fa-python"></i>
-                                    <span>Python</span>
-                                </div>
-                                <div class="skill-level">
-                                    <div class="level-bar">
-                                        <div class="level-fill" style="width: 82%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <i class="fab fa-git-alt"></i>
-                                    <span>Git</span>
-                                </div>
-                                <div class="skill-level">
-                                    <div class="level-bar">
-                                        <div class="level-fill" style="width: 90%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <i class="fab fa-linux"></i>
-                                    <span>Linux</span>
-                                </div>
-                                <div class="skill-level">
-                                    <div class="level-bar">
-                                        <div class="level-fill" style="width: 80%"></div>
+                                        <div class="level-fill" style="width: 70%"></div>
                                     </div>
                                 </div>
                             </div>
@@ -668,7 +598,7 @@
         <div class="container">
             <div class="section-header">
                 <span class="section-number">04.</span>
-                <h2 class="section-title">Experience</h2>
+                <h2 class="section-title">Experience & Achievements</h2>
                 <div class="section-line"></div>
             </div>
             
@@ -676,100 +606,96 @@
                 <div class="timeline-item">
                     <div class="timeline-marker">
                         <div class="marker-icon">
-                            <i class="fas fa-briefcase"></i>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-content">
-                        <div class="timeline-card">
-                            <div class="card-header">
-                                <div class="job-info">
-                                    <h3 class="job-title">Software Development Engineer Intern</h3>
-                                    <div class="company-info">
-                                        <span class="company">InternPro</span>
-                                        <span class="duration">June 2025 - Present</span>
-                                    </div>
-                                </div>
-                                <div class="job-type">Full-time</div>
-                            </div>
-                            
-                            <div class="card-content">
-                                <p class="job-description">
-                                    Engineering scalable backend systems with Node.js and MongoDB. Developed 10+ RESTful APIs 
-                                    deployed via Docker containers on AWS EC2 instances, serving thousands of users daily 
-                                    with optimized performance and reliability.
-                                </p>
-                                
-                                <div class="achievements">
-                                    <h4>Key Achievements:</h4>
-                                    <ul>
-                                        <li>Built and deployed 10+ production-ready RESTful APIs</li>
-                                        <li>Implemented Docker containerization for consistent deployments</li>
-                                        <li>Optimized database queries for improved performance</li>
-                                        <li>Collaborated with cross-functional teams on feature development</li>
-                                    </ul>
-                                </div>
-                                
-                                <div class="job-tech">
-                                    <span class="tech-tag">Node.js</span>
-                                    <span class="tech-tag">MongoDB</span>
-                                    <span class="tech-tag">Docker</span>
-                                    <span class="tech-tag">AWS EC2</span>
-                                    <span class="tech-tag">REST APIs</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-marker">
-                        <div class="marker-icon">
                             <i class="fas fa-code"></i>
                         </div>
                     </div>
                     
-                    <div class="timeline-content">
-                        <div class="timeline-card">
-                            <div class="card-header">
-                                <div class="job-info">
-                                    <h3 class="job-title">Backend Developer Intern</h3>
-                                    <div class="company-info">
-                                        <span class="company">Fintegic Pvt. Ltd.</span>
-                                        <span class="duration">May 2024 - Sep 2024</span>
-                                    </div>
+                    <div class="timeline-card">
+                        <div class="card-header">
+                            <div>
+                                <h3 class="job-title">Software Development Engineer Intern</h3>
+                                <div class="company-info">
+                                    <span class="company">InternPro</span>
+                                    <span class="duration">June 2025 - Present</span>
                                 </div>
-                                <div class="job-type">Internship</div>
+                            </div>
+                            <span class="job-type">Remote</span>
+                        </div>
+                        
+                        <div class="card-content">
+                            <p class="job-description">
+                                Engineering scalable backend systems with Node.js and MongoDB for high-performance 
+                                server-side applications. Developing robust APIs and deploying containerized solutions 
+                                on cloud infrastructure.
+                            </p>
+                            
+                            <div class="achievements">
+                                <h4>Key Achievements:</h4>
+                                <ul>
+                                    <li>Engineered scalable backend systems with Node.js and MongoDB for high-performance applications</li>
+                                    <li>Developed 10+ RESTful APIs with MongoDB integration</li>
+                                    <li>Deployed applications via Docker containers on AWS EC2 instances</li>
+                                    <li>Built comprehensive API documentation and automated testing suites</li>
+                                </ul>
                             </div>
                             
-                            <div class="card-content">
-                                <p class="job-description">
-                                    Enhanced server-side performance by 25% through advanced Node.js optimization techniques. 
-                                    Designed RESTful API endpoints, database schemas, and authentication systems for 
-                                    financial technology applications.
-                                </p>
-                                
-                                <div class="achievements">
-                                    <h4>Key Achievements:</h4>
-                                    <ul>
-                                        <li>Improved server performance by 25% through optimization</li>
-                                        <li>Designed secure authentication and authorization systems</li>
-                                        <li>Built scalable database schemas for financial data</li>
-                                        <li>Implemented comprehensive API documentation</li>
-                                    </ul>
-                                </div>
-                                
-                                <div class="job-tech">
-                                    <span class="tech-tag">Node.js</span>
-                                    <span class="tech-tag">Express.js</span>
-                                    <span class="tech-tag">Authentication</span>
-                                    <span class="tech-tag">Database Design</span>
-                                </div>
+                            <div class="job-tech">
+                                <span class="tech-tag">Node.js</span>
+                                <span class="tech-tag">MongoDB</span>
+                                <span class="tech-tag">Express.js</span>
+                                <span class="tech-tag">Docker</span>
+                                <span class="tech-tag">AWS EC2</span>
                             </div>
                         </div>
                     </div>
                 </div>
-
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <div class="marker-icon">
+                            <i class="fas fa-server"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-card">
+                        <div class="card-header">
+                            <div>
+                                <h3 class="job-title">Backend Developer Intern</h3>
+                                <div class="company-info">
+                                    <span class="company">Fintegic Pvt. Ltd.</span>
+                                    <span class="duration">May 2024 - September 2024</span>
+                                </div>
+                            </div>
+                            <span class="job-type">Remote</span>
+                        </div>
+                        
+                        <div class="card-content">
+                            <p class="job-description">
+                                Designed and implemented comprehensive backend solutions for financial technology applications. 
+                                Focused on creating secure, scalable API endpoints and optimizing system performance.
+                            </p>
+                            
+                            <div class="achievements">
+                                <h4>Key Achievements:</h4>
+                                <ul>
+                                    <li>Enhanced server-side performance by 25% through Node.js and Express.js optimization techniques</li>
+                                    <li>Designed and implemented RESTful API endpoints with robust error handling</li>
+                                    <li>Built secure database schemas and authentication systems</li>
+                                    <li>Implemented caching strategies and database query optimization</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="job-tech">
+                                <span class="tech-tag">Node.js</span>
+                                <span class="tech-tag">Express.js</span>
+                                <span class="tech-tag">MongoDB</span>
+                                <span class="tech-tag">REST APIs</span>
+                                <span class="tech-tag">Authentication</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
                 <div class="timeline-item">
                     <div class="timeline-marker">
                         <div class="marker-icon">
@@ -777,90 +703,133 @@
                         </div>
                     </div>
                     
-                    <div class="timeline-content">
-                        <div class="timeline-card achievement-card">
-                            <div class="card-header">
-                                <div class="job-info">
-                                    <h3 class="job-title">Top 5 Finalist - Binance Blockchain Hackathon</h3>
-                                    <div class="company-info">
-                                        <span class="company">Binance</span>
-                                        <span class="duration">2023</span>
-                                    </div>
+                    <div class="timeline-card achievement-card">
+                        <div class="card-header">
+                            <div>
+                                <h3 class="job-title">Top 5 Finalist - Binance Blockchain Hackathon</h3>
+                                <div class="company-info">
+                                    <span class="company">Global Competition</span>
+                                    <span class="duration">2023</span>
                                 </div>
-                                <div class="achievement-badge">🏆 Achievement</div>
+                            </div>
+                            <span class="achievement-badge">Top 5</span>
+                        </div>
+                        
+                        <div class="card-content">
+                            <p class="job-description">
+                                Competed against 200+ teams in a prestigious global blockchain development challenge. 
+                                Secured top 5 position by building innovative DeFi solutions using smart contracts 
+                                and cutting-edge web3 technologies.
+                            </p>
+                            
+                            <div class="achievements">
+                                <h4>Competition Highlights:</h4>
+                                <ul>
+                                    <li>Developed smart contracts for decentralized finance applications</li>
+                                    <li>Implemented advanced tokenomics and yield farming mechanisms</li>
+                                    <li>Created intuitive user interfaces for complex DeFi interactions</li>
+                                    <li>Presented solution to industry experts and venture capitalists</li>
+                                </ul>
                             </div>
                             
-                            <div class="card-content">
-                                <p class="job-description">
-                                    Competed against 200+ teams in a global blockchain development challenge. 
-                                    Secured top 5 position by building innovative DeFi solutions using smart contracts 
-                                    and cutting-edge web3 technologies.
-                                </p>
-                                
-                                <div class="achievements">
-                                    <h4>Accomplishments:</h4>
-                                    <ul>
-                                        <li>Ranked in top 5 among 200+ participating teams</li>
-                                        <li>Built innovative blockchain-based financial solution</li>
-                                        <li>Implemented smart contracts with Solidity</li>
-                                        <li>Presented solution to industry experts and judges</li>
-                                    </ul>
-                                </div>
-                                
-                                <div class="job-tech">
-                                    <span class="tech-tag">Blockchain</span>
-                                    <span class="tech-tag">Web3</span>
-                                    <span class="tech-tag">Smart Contracts</span>
-                                    <span class="tech-tag">DeFi</span>
-                                </div>
+                            <div class="job-tech">
+                                <span class="tech-tag">Solidity</span>
+                                <span class="tech-tag">Web3.js</span>
+                                <span class="tech-tag">React</span>
+                                <span class="tech-tag">Ethereum</span>
+                                <span class="tech-tag">DeFi</span>
                             </div>
                         </div>
                     </div>
                 </div>
-
+                
                 <div class="timeline-item">
                     <div class="timeline-marker">
                         <div class="marker-icon">
-                            <i class="fas fa-heart"></i>
+                            <i class="fab fa-github"></i>
                         </div>
                     </div>
                     
-                    <div class="timeline-content">
-                        <div class="timeline-card">
-                            <div class="card-header">
-                                <div class="job-info">
-                                    <h3 class="job-title">Google Code-In Contributor</h3>
-                                    <div class="company-info">
-                                        <span class="company">Google</span>
-                                        <span class="duration">2019</span>
-                                    </div>
+                    <div class="timeline-card">
+                        <div class="card-header">
+                            <div>
+                                <h3 class="job-title">Google Code-In 2019 Contributor</h3>
+                                <div class="company-info">
+                                    <span class="company">Open Source Community</span>
+                                    <span class="duration">2019</span>
                                 </div>
-                                <div class="job-type">Open Source</div>
+                            </div>
+                            <span class="job-type">Community</span>
+                        </div>
+                        
+                        <div class="card-content">
+                            <p class="job-description">
+                                Contributed to the global open-source community through Google's prestigious 
+                                Code-In program. Resolved critical bugs and improved code quality across 
+                                multiple high-impact projects used by thousands of developers worldwide.
+                            </p>
+                            
+                            <div class="achievements">
+                                <h4>Key Contributions:</h4>
+                                <ul>
+                                    <li>Resolved 5+ critical bugs in popular open-source projects</li>
+                                    <li>Improved documentation and added comprehensive test coverage</li>
+                                    <li>Collaborated with international development teams</li>
+                                    <li>Gained valuable experience in collaborative software development</li>
+                                </ul>
                             </div>
                             
-                            <div class="card-content">
-                                <p class="job-description">
-                                    Contributed to the global open-source community by resolving 5+ critical bugs 
-                                    in various projects. Gained valuable experience in collaborative development, 
-                                    code review processes, and community-driven software development.
-                                </p>
-                                
-                                <div class="achievements">
-                                    <h4>Contributions:</h4>
-                                    <ul>
-                                        <li>Resolved 5+ critical bugs in open-source projects</li>
-                                        <li>Collaborated with developers worldwide</li>
-                                        <li>Improved code quality through peer reviews</li>
-                                        <li>Learned best practices for community development</li>
-                                    </ul>
+                            <div class="job-tech">
+                                <span class="tech-tag">JavaScript</span>
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">Java</span>
+                                <span class="tech-tag">Git</span>
+                                <span class="tech-tag">Testing</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <div class="marker-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-card achievement-card">
+                        <div class="card-header">
+                            <div>
+                                <h3 class="job-title">Internshala Student Partner</h3>
+                                <div class="company-info">
+                                    <span class="company">Internshala</span>
+                                    <span class="duration">2023-2024</span>
                                 </div>
-                                
-                                <div class="job-tech">
-                                    <span class="tech-tag">Open Source</span>
-                                    <span class="tech-tag">Bug Fixing</span>
-                                    <span class="tech-tag">Code Review</span>
-                                    <span class="tech-tag">Community</span>
-                                </div>
+                            </div>
+                            <span class="achievement-badge">Top 10%</span>
+                        </div>
+                        
+                        <div class="card-content">
+                            <p class="job-description">
+                                Selected as Student Partner and ranked in top 10% among 1000+ ambassadors nationwide. 
+                                Led campus engagement initiatives and helped connect students with career opportunities.
+                            </p>
+                            
+                            <div class="achievements">
+                                <h4>Key Achievements:</h4>
+                                <ul>
+                                    <li>Ranked in top 10% among 1000+ student ambassadors</li>
+                                    <li>Organized career development workshops and events</li>
+                                    <li>Mentored 50+ students in career planning and skill development</li>
+                                    <li>Built strong network of professionals and industry connections</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="job-tech">
+                                <span class="tech-tag">Leadership</span>
+                                <span class="tech-tag">Event Management</span>
+                                <span class="tech-tag">Mentoring</span>
+                                <span class="tech-tag">Networking</span>
                             </div>
                         </div>
                     </div>
@@ -874,13 +843,13 @@
         <div class="container">
             <div class="section-header">
                 <span class="section-number">05.</span>
-                <h2 class="section-title">Get In Touch</h2>
+                <h2 class="section-title">Let's Work Together</h2>
                 <div class="section-line"></div>
             </div>
             
             <div class="contact-content">
                 <div class="contact-intro">
-                    <h3>Let's build something amazing together</h3>
+                    <h3>Get In Touch</h3>
                     <p>
                         I'm always interested in hearing about new opportunities, especially ambitious 
                         or large scale projects. But if you just want to say hi, I'd love to hear from you too!
@@ -895,9 +864,7 @@
                         <div class="contact-info">
                             <h4>Email</h4>
                             <p>pulkit.jindal30@gmail.com</p>
-                            <a href="mailto:pulkit.jindal30@gmail.com" class="contact-btn">
-                                Send Message
-                            </a>
+                            <a href="mailto:pulkit.jindal30@gmail.com" class="contact-btn">Send Message</a>
                         </div>
                     </div>
                     
@@ -908,9 +875,7 @@
                         <div class="contact-info">
                             <h4>Phone</h4>
                             <p>+91-97737-35800</p>
-                            <a href="tel:+919773735800" class="contact-btn">
-                                Call Now
-                            </a>
+                            <a href="tel:+919773735800" class="contact-btn">Call Now</a>
                         </div>
                     </div>
                     
@@ -921,27 +886,25 @@
                         <div class="contact-info">
                             <h4>Location</h4>
                             <p>Delhi, India</p>
-                            <span class="contact-btn disabled">
-                                Available Remotely
-                            </span>
+                            <span class="contact-btn disabled">Available Remotely</span>
                         </div>
                     </div>
                 </div>
                 
                 <div class="contact-social">
-                    <h4>Find me on</h4>
+                    <h4>Follow me on social media</h4>
                     <div class="social-links">
-                        <a href="https://www.linkedin.com/in/pulkitjindal30/" target="_blank" class="social-link linkedin">
-                            <i class="fab fa-linkedin-in"></i>
-                            <span>LinkedIn</span>
+                        <a href="https://www.linkedin.com/in/pulkitjindal30/" target="_blank" rel="noopener" class="social-link linkedin">
+                            <i class="fab fa-linkedin"></i>
+                            LinkedIn
                         </a>
-                        <a href="https://github.com/Pul-kt" target="_blank" class="social-link github">
+                        <a href="https://github.com/Pul-kt" target="_blank" rel="noopener" class="social-link github">
                             <i class="fab fa-github"></i>
-                            <span>GitHub</span>
+                            GitHub
                         </a>
-                        <a href="https://leetcode.com/u/_pullkit_jindal/" target="_blank" class="social-link leetcode">
+                        <a href="https://leetcode.com/u/_pullkit_jindal/" target="_blank" rel="noopener" class="social-link leetcode">
                             <i class="fas fa-code"></i>
-                            <span>LeetCode</span>
+                            LeetCode
                         </a>
                     </div>
                 </div>
@@ -954,13 +917,14 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-text">
-                    <p>Designed & Built by Pulkit Jindal</p>
-                    <p>© 2025 All rights reserved.</p>
+                    <p>&copy; 2024 Pulkit Jindal. All rights reserved.</p>
+                    <p>Built with ❤️ using vanilla HTML, CSS, and JavaScript</p>
                 </div>
             </div>
         </div>
     </footer>
 
+    <!-- JavaScript -->
     <script src="script.js"></script>
 </body>
 </html>
