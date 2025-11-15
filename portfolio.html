@@ -1,0 +1,1451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pulkit Jindal - Business Analyst & Product Management Professional</title>
+    <meta name="description" content="Incoming Intern at Bain & Company. Business Analyst and Product Management professional with expertise in data analysis, strategic planning, and market research.">
+    <meta name="author" content="Pulkit Jindal">
+    <style>
+/* ===========================
+   CSS Variables & Base Styles
+   =========================== */
+:root {
+    --bg-primary: #050505;
+    --bg-secondary: #0a0a0a;
+    --text-primary: #ffffff;
+    --text-secondary: #b0b0b0;
+    --accent-cyan: #00d9ff;
+    --accent-cyan-glow: rgba(0, 217, 255, 0.5);
+    --card-bg: rgba(15, 15, 15, 0.8);
+    --border-color: rgba(255, 255, 255, 0.1);
+    --grid-color: rgba(255, 255, 255, 0.03);
+    --shadow-glow: 0 0 30px rgba(0, 217, 255, 0.3);
+    --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.5);
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-theme="light"] {
+    --bg-primary: #f5f5f5;
+    --bg-secondary: #ffffff;
+    --text-primary: #1a1a1a;
+    --text-secondary: #4a4a4a;
+    --accent-cyan: #0088cc;
+    --accent-cyan-glow: rgba(0, 136, 204, 0.3);
+    --card-bg: rgba(255, 255, 255, 0.9);
+    --border-color: rgba(0, 0, 0, 0.1);
+    --grid-color: rgba(0, 0, 0, 0.02);
+    --shadow-glow: 0 0 30px rgba(0, 136, 204, 0.2);
+    --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Animated Grid Background */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(var(--grid-color) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+    background-size: 50px 50px;
+    opacity: 0.5;
+    z-index: -1;
+    animation: gridMove 20s linear infinite;
+}
+
+@keyframes gridMove {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(50px, 50px); }
+}
+
+@keyframes glowPulse {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ===========================
+   Theme Toggle Button
+   =========================== */
+.theme-toggle {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--card-bg);
+    border: 2px solid var(--border-color);
+    backdrop-filter: blur(10px);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    transition: var(--transition);
+    z-index: 999;
+    box-shadow: var(--shadow-card);
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1) rotate(15deg);
+    border-color: var(--accent-cyan);
+    box-shadow: var(--shadow-glow);
+}
+
+/* ===========================
+   Navigation
+   =========================== */
+#navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(5, 5, 5, 0.8);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-color);
+    z-index: 1000;
+    transition: var(--transition);
+}
+
+[data-theme="light"] #navbar {
+    background: rgba(255, 255, 255, 0.8);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.terminal-icon {
+    color: var(--accent-cyan);
+    font-size: 1.2rem;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    margin: 0;
+}
+
+.nav-links a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+    position: relative;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent-cyan);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--accent-cyan);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.mobile-menu-btn {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.mobile-menu-btn span {
+    width: 25px;
+    height: 3px;
+    background: var(--text-primary);
+    transition: var(--transition);
+}
+
+/* ===========================
+   Hero Section
+   =========================== */
+#hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 100px 20px 50px;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-glow {
+    position: absolute;
+    top: -50%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(circle, var(--accent-cyan-glow) 0%, transparent 70%);
+    opacity: 0.3;
+    pointer-events: none;
+    animation: glowPulse 4s ease-in-out infinite;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+.terminal-line {
+    color: var(--accent-cyan);
+    font-family: 'Courier New', monospace;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+}
+
+.hero-title {
+    font-size: 4rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.gradient-text {
+    background: linear-gradient(135deg, var(--accent-cyan) 0%, var(--text-primary) 50%, var(--accent-cyan) 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradientShift 3s ease infinite;
+}
+
+@keyframes gradientShift {
+    0%, 100% { background-position: 0% center; }
+    50% { background-position: 100% center; }
+}
+
+.hero-subtitle {
+    color: var(--accent-cyan);
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    font-family: 'Courier New', monospace;
+}
+
+.hero-bio {
+    font-size: 1.1rem;
+    max-width: 700px;
+    margin: 0 auto 2rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* ===========================
+   Buttons
+   =========================== */
+.btn {
+    padding: 14px 32px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+    display: inline-block;
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.btn-primary {
+    background: var(--accent-cyan);
+    color: var(--bg-primary);
+    box-shadow: 0 0 20px var(--accent-cyan-glow);
+}
+
+[data-theme="light"] .btn-primary {
+    color: #ffffff;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 30px var(--accent-cyan-glow);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--accent-cyan);
+    border-color: var(--accent-cyan);
+}
+
+.btn-secondary:hover {
+    background: var(--accent-cyan);
+    color: var(--bg-primary);
+}
+
+[data-theme="light"] .btn-secondary:hover {
+    color: #ffffff;
+}
+
+/* ===========================
+   Sections
+   =========================== */
+section {
+    padding: 100px 20px;
+    position: relative;
+}
+
+.section-title {
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    font-weight: 700;
+}
+
+.section-command {
+    display: block;
+    font-size: 1rem;
+    color: var(--accent-cyan);
+    font-family: 'Courier New', monospace;
+    margin-bottom: 0.5rem;
+}
+
+/* ===========================
+   Tech Cards
+   =========================== */
+.tech-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 2rem;
+    backdrop-filter: blur(10px);
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.tech-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 217, 255, 0.1), transparent);
+    transition: left 0.5s;
+}
+
+[data-theme="light"] .tech-card::before {
+    background: linear-gradient(90deg, transparent, rgba(0, 136, 204, 0.1), transparent);
+}
+
+.tech-card:hover::before {
+    left: 100%;
+}
+
+.tech-card:hover {
+    border-color: var(--accent-cyan);
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-glow);
+}
+
+/* ===========================
+   About Section
+   =========================== */
+.about-content {
+    display: grid;
+    gap: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.about-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-secondary);
+}
+
+.card-title {
+    color: var(--accent-cyan);
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    font-family: 'Courier New', monospace;
+}
+
+.strengths-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.strength-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    background: rgba(0, 217, 255, 0.05);
+    border-radius: 8px;
+    border: 1px solid rgba(0, 217, 255, 0.2);
+    transition: var(--transition);
+}
+
+[data-theme="light"] .strength-item {
+    background: rgba(0, 136, 204, 0.05);
+    border-color: rgba(0, 136, 204, 0.2);
+}
+
+.strength-item:hover {
+    background: rgba(0, 217, 255, 0.1);
+    transform: translateX(5px);
+}
+
+[data-theme="light"] .strength-item:hover {
+    background: rgba(0, 136, 204, 0.1);
+}
+
+.bullet {
+    color: var(--accent-cyan);
+    font-size: 1.2rem;
+}
+
+/* ===========================
+   Experience & Internship Sections
+   =========================== */
+.experience-list {
+    display: grid;
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.experience-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-left: 4px solid var(--accent-cyan);
+    border-radius: 12px;
+    padding: 2rem;
+    backdrop-filter: blur(10px);
+    transition: var(--transition);
+}
+
+.experience-card:hover {
+    border-color: var(--accent-cyan);
+    transform: translateX(5px);
+    box-shadow: var(--shadow-glow);
+}
+
+.experience-header h3 {
+    font-size: 1.8rem;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.experience-position {
+    color: var(--accent-cyan);
+    font-weight: 600;
+    font-size: 1.2rem;
+    margin-bottom: 0.75rem;
+}
+
+.experience-meta {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 0.5rem;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+}
+
+.experience-card ul {
+    list-style: none;
+    margin-top: 1.5rem;
+}
+
+.experience-card li {
+    padding: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+    color: var(--text-secondary);
+}
+
+.experience-card li::before {
+    content: "▹";
+    position: absolute;
+    left: 0;
+    color: var(--accent-cyan);
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+/* ===========================
+   Projects Section
+   =========================== */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+}
+
+.project-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 2rem;
+    backdrop-filter: blur(10px);
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card:hover {
+    border-color: var(--accent-cyan);
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-glow);
+}
+
+.project-header {
+    margin-bottom: 1.5rem;
+}
+
+.project-title {
+    font-size: 1.5rem;
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+}
+
+.project-tech {
+    color: var(--accent-cyan);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.project-date {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+}
+
+.project-card ul {
+    list-style: none;
+    flex-grow: 1;
+}
+
+.project-card li {
+    padding: 0.4rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+.project-card li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--accent-cyan);
+    font-size: 1.5rem;
+}
+
+/* ===========================
+   Skills Section
+   =========================== */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.skill-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 2rem;
+    backdrop-filter: blur(10px);
+    transition: var(--transition);
+}
+
+.skill-card:hover {
+    border-color: var(--accent-cyan);
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-glow);
+}
+
+.skill-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.skill-icon {
+    font-size: 2rem;
+}
+
+.skill-header h3 {
+    color: var(--text-primary);
+    font-size: 1.5rem;
+}
+
+.skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.skill-tag {
+    background: rgba(0, 217, 255, 0.1);
+    color: var(--accent-cyan);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    border: 1px solid rgba(0, 217, 255, 0.3);
+    transition: var(--transition);
+}
+
+[data-theme="light"] .skill-tag {
+    background: rgba(0, 136, 204, 0.1);
+    border-color: rgba(0, 136, 204, 0.3);
+}
+
+.skill-tag:hover {
+    background: rgba(0, 217, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+[data-theme="light"] .skill-tag:hover {
+    background: rgba(0, 136, 204, 0.2);
+}
+
+/* ===========================
+   Achievements Section
+   =========================== */
+.achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.achievement-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-left: 4px solid var(--accent-cyan);
+    border-radius: 12px;
+    padding: 2rem;
+    backdrop-filter: blur(10px);
+    transition: var(--transition);
+}
+
+.achievement-card:hover {
+    border-color: var(--accent-cyan);
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-glow);
+}
+
+.achievement-title {
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+    font-size: 1.3rem;
+}
+
+.achievement-desc {
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.achievement-year {
+    display: inline-block;
+    background: var(--accent-cyan);
+    color: #ffffff;
+    padding: 0.25rem 0.75rem;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+/* ===========================
+   Contact Section
+   =========================== */
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.contact-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 2rem;
+    backdrop-filter: blur(10px);
+    text-align: center;
+    text-decoration: none;
+    color: var(--text-primary);
+    transition: var(--transition);
+}
+
+.contact-card:hover {
+    border-color: var(--accent-cyan);
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-glow);
+}
+
+.contact-icon {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.contact-card h3 {
+    color: var(--accent-cyan);
+    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+}
+
+.contact-card p {
+    color: var(--text-secondary);
+}
+
+/* ===========================
+   Footer
+   =========================== */
+footer {
+    background: var(--bg-secondary);
+    padding: 2rem 20px;
+    text-align: center;
+    border-top: 1px solid var(--border-color);
+}
+
+.footer-text {
+    color: var(--text-secondary);
+    font-family: 'Courier New', monospace;
+}
+
+.cursor-blink {
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+/* ===========================
+   Responsive Design
+   =========================== */
+@media (max-width: 768px) {
+    .nav-links {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        flex-direction: column;
+        background: rgba(5, 5, 5, 0.98);
+        backdrop-filter: blur(10px);
+        width: 100%;
+        padding: 2rem;
+        gap: 1rem;
+        transition: left 0.3s ease;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    [data-theme="light"] .nav-links {
+        background: rgba(255, 255, 255, 0.98);
+    }
+
+    .nav-links.active {
+        left: 0;
+    }
+
+    .mobile-menu-btn {
+        display: flex;
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .projects-grid,
+    .skills-grid,
+    .achievements-grid,
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .theme-toggle {
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .btn {
+        width: 100%;
+        text-align: center;
+    }
+}
+    </style>
+</head>
+<body>
+    <!-- Theme Toggle Button -->
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+        <span id="theme-icon">🌙👀</span>
+    </button>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <span class="terminal-icon">▶</span>
+                Pulkit Jindal
+            </a>
+            <button id="mobile-menu-toggle" class="mobile-menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#internships">Internships</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#achievements">Achievements</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="hero-glow"></div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="terminal-line">$ whoami</div>
+                <h1 class="hero-title">
+                    <span class="gradient-text">Pulkit Jindal</span>
+                </h1>
+                <p class="hero-subtitle">&gt; Upcoming Associate Intern @ Bain & Company</p>
+                <p class="hero-bio">
+                    Analyst with expertise in data analysis, strategic planning, and market research. 
+                    Passionate about leveraging data-driven insights to solve complex business problems.
+                </p>
+                <div class="hero-buttons">
+                     <!-- Resume Link -->
+                    <a href="https://drive.google.com/file/d/154WYZISWinb-b1qRPdcsCsWhNNmLEMc9/view?usp=sharing" 
+                    class="btn btn-primary">View Resume</a>
+                    <a href="#contact" class="btn btn-secondary">Contact Me</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="section-command">$ cat about.txt</span>
+                About Me
+            </h2>
+            <div class="about-content">
+                <div class="tech-card">
+                    <p class="about-text">
+                        I'm a dedicated Analyst currently pursuing my B.Tech at Delhi Technological University. 
+                        With hands-on experience at leading organizations and a passion for data-driven decision making, 
+                        I excel at transforming complex business challenges into actionable insights.
+                    </p>
+                </div>
+                <div class="tech-card">
+                    <h3 class="card-title">&gt; Key Strengths</h3>
+                    <div class="strengths-grid">
+                        <div class="strength-item">
+                            <span class="bullet">▹</span>
+                            <span>Data Analysis & Visualization</span>
+                        </div>
+                        <div class="strength-item">
+                            <span class="bullet">▹</span>
+                            <span>Strategic Planning & Market Research</span>
+                        </div>
+                        <div class="strength-item">
+                            <span class="bullet">▹</span>
+                            <span>Product Management & Development</span>
+                        </div>
+                        <div class="strength-item">
+                            <span class="bullet">▹</span>
+                            <span>Team Leadership & Event Management</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Internships Section -->
+    <section id="internships">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="section-command">$ ls internships/</span>
+                Internships
+            </h2>
+            <div id="internships-list" class="experience-list">
+                <!-- Dynamically generated by script.js -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="section-command">$ ls experience/</span>
+                Experience
+            </h2>
+            <div id="experience-list" class="experience-list">
+                <!-- Dynamically generated by script.js -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="section-command">$ cd projects/</span>
+                Projects
+            </h2>
+            <div id="projects-grid" class="projects-grid">
+                <!-- Dynamically generated by script.js -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="section-command">$ cat skills.json</span>
+                Skills
+            </h2>
+            <div class="skills-grid">
+                <div class="tech-card skill-card">
+                    <div class="skill-header">
+                        <span class="skill-icon">📈</span>
+                        <h3>Business & Analytics</h3>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Market Research</span>
+                        <span class="skill-tag">Data Analysis</span>
+                        <span class="skill-tag">Strategic Planning</span>
+                        <span class="skill-tag">Financial Modeling</span>
+                    </div>
+                </div>
+                <div class="tech-card skill-card">
+                    <div class="skill-header">
+                        <span class="skill-icon">🗄️</span>
+                        <h3>Tools</h3>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Excel (Advanced)</span>
+                        <span class="skill-tag">PowerPoint</span>
+                        <span class="skill-tag">Tableau</span>
+                        <span class="skill-tag">Power Bi</span>
+                    </div>
+                </div>
+                <div class="tech-card skill-card">
+                    <div class="skill-header">
+                        <span class="skill-icon">💻</span>
+                        <h3>Technical</h3>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">C++</span>
+                        <span class="skill-tag">Databases</span>
+                        <span class="skill-tag">Web Development</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="section-command">$ git log achievements</span>
+                Achievements
+            </h2>
+            <div class="achievements-grid">
+                <div class="tech-card achievement-card">
+                    <h3 class="achievement-title">McKinsey.org Forward Program</h3>
+                    <p class="achievement-desc">An international leadership and professional development program</p>
+                    <span class="achievement-year">2025</span>
+                </div>
+                <div class="tech-card achievement-card">
+                    <h3 class="achievement-title">Top 5 Finalist</h3>
+                    <p class="achievement-desc">Binance Blockchain Hackathon (200+ teams)</p>
+                    <span class="achievement-year">2024</span>
+                </div>
+                <div class="tech-card achievement-card">
+                    <h3 class="achievement-title">Google Code-In Open Source Contributor</h3>
+                    <p class="achievement-desc">Contributed to open-source projects</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="section-command">$ connect --with pulkit</span>
+                Get In Touch
+            </h2>
+            <div class="contact-grid">
+                <a href="mailto:pulkit.jindal30@gmail.com" class="tech-card contact-card">
+                    <span class="contact-icon">📧</span>
+                    <h3>Email</h3>
+                    <p>pulkit.jindal30@gmail.com</p>
+                </a>
+                <a href="tel:+919773735800" class="tech-card contact-card">
+                    <span class="contact-icon">📱</span>
+                    <h3>Phone</h3>
+                    <p>+91 9773735800</p>
+                </a>
+                <a href="https://www.linkedin.com/in/pulkitjindal30/"  rel="noopener noreferrer" class="tech-card contact-card">
+                    <span class="contact-icon">💼</span>
+                    <h3>LinkedIn</h3>
+                    <p>Connect with me</p>
+                </a>
+                <a href="https://github.com/Pul-kt" target="_blank" rel="noopener noreferrer" class="tech-card contact-card">
+                    <span class="contact-icon">🐙</span>
+                    <h3>GitHub</h3>
+                    <p>View my code</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p class="footer-text">
+                &copy; 2025 Pulkit Jindal. All rights reserved.
+                <span class="cursor-blink">_</span>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+// ===========================
+// Portfolio Data
+// ===========================
+const internships = [
+  {
+    company: "Bain & Company",
+    location: "Upcoming",
+    position: "Intern",
+    period: "Jan 2026",
+    description: [
+      "Global management consulting firm"
+    ]
+  },
+  {
+    company: "Ambey Polymers",
+    location: "On-Site",
+    position: "Business Analyst",
+    period: "May 2025 – Aug 2025",
+    description: [
+      "Analyzed transaction patterns of 10K+ daily operations to identify process bottlenecks, reducing turnaround time by 35%",
+      "Created executive dashboards for leadership to monitor KPIs across 15+ microservices in real-time",
+      "Recognized for sincerity, hard work, and results-oriented approach by management"
+    ]
+  },
+  {
+    company: "Waasle Laundry Pvt. Ltd.",
+    location: "Delhi, India",
+    position: "Analyst Intern",
+    period: "Nov 2024 – Mar 2025",
+    description: [
+      "Supported internal analytical operations and data management for organizational workflows optimization",
+      "Evaluated performance metrics and contributed to data-driven decision making for business operations",
+      "Applied analytical concepts to real-world business scenarios, consistently meeting project deadlines",
+      "Collaborated effectively with cross-functional teams and demonstrated quick learning ability",
+      "Recognized for professionalism, problem-solving efficiency, and positive contribution to team projects"
+    ]
+  },
+  {
+    company: "Fintegic Private Limited",
+    location: "Remote",
+    position: "Product Management",
+    period: "May 2024 – Sept 2024",
+    description: [
+      "Conducted market research and competitive analysis to guide product positioning and strategy",
+      "Implemented data analysis processes that improved reporting speed by 25%",
+      "Collaborated with product and engineering teams to align data insights with business goals"
+    ]
+  }
+];
+
+const experiences = [
+  {
+    organization: "Fresources, DTU",
+    location: "Delhi, India",
+    position: "Event Management Head",
+    period: "Sep 2024 – Present",
+    description: [
+      "Planned and executed large-scale events attracting 1000+ attendees, increasing engagement by 60%",
+      "Managed a team of 15 coordinators and 80+ volunteers, ensuring on-time, within-budget delivery"
+    ]
+  },
+  {
+    organization: "STEP DTU",
+    location: "Delhi, India",
+    position: "MentorHead - Mentorlink",
+    period: "Aug 2024 – Jun 2025",
+    description: [
+      "Head of mentors managing and helping them to mentor 150+ students",
+      "Conducted skill workshops and guidance sessions for 300+ students to enhance technical and analytical capabilities"
+    ]
+  }
+];
+
+const projects = [
+  {
+    title: "Coffee Shop Analytics Dashboard",
+    tech: "Microsoft Excel, Power Query, Pivot Tables, Data Visualization",
+    date: "Jan 2025",
+    description: [
+      "Developed an interactive Excel dashboard to analyze sales across locations, products, and time periods for a coffee shop chain",
+      "Leveraged Pivot Tables, slicers, and dynamic charts to visualize KPIs — total sales ($698K), footfall (149K), and average bill value",
+      "Performed trend analysis by day and month, identifying peak sales on Thursdays and a 104% revenue increase from January to June",
+      "Segmented sales by product category (Coffee, Bakery, Tea, etc.) and customer size preference, revealing coffee contributed 38% of total revenue",
+      "Streamlined data cleaning and aggregation using Power Query, cutting manual effort by 70% and enabling monthly reporting automation"
+    ],
+    link: "#"
+  },
+  {
+    title: "Comprehensive Bank Loan Analysis and Prediction",
+    tech: "Machine Learning, Power BI, Python",
+    date: "April 2024",
+    description: [
+      "Developed a framework for analyzing and predicting bank loan outcomes, enabling better decision-making for stakeholders",
+      "Built a Random Forest machine learning model achieving 97% accuracy in predicting loan approval outcomes",
+      "Created 3 interactive Power BI dashboards to visualize loan trends, approval rates, demographic insights, and borrower behavior patterns",
+      "Utilized Power BI for dashboard design, and Python for predictive modeling and assessment"
+    ],
+    link: "#"
+  }
+];
+
+// ===========================
+// Theme Toggle
+// ===========================
+const themeToggle = document.getElementById('theme-toggle');
+const themeIcon = document.getElementById('theme-icon');
+const htmlElement = document.documentElement;
+
+// Check for saved theme preference or default to 'dark'
+const currentTheme = localStorage.getItem('theme') || 'dark';
+htmlElement.setAttribute('data-theme', currentTheme);
+themeIcon.textContent = currentTheme === 'dark' ? '🌙' : '☀️';
+
+themeToggle.addEventListener('click', () => {
+  const theme = htmlElement.getAttribute('data-theme');
+  const newTheme = theme === 'dark' ? 'light' : 'dark';
+  
+  htmlElement.setAttribute('data-theme', newTheme);
+  localStorage.setItem('theme', newTheme);
+  themeIcon.textContent = newTheme === 'dark' ? '🌙' : '☀️';
+});
+
+// ===========================
+// Mobile Menu Toggle
+// ===========================
+const mobileMenuBtn = document.getElementById('mobile-menu-toggle');
+const navLinks = document.getElementById('nav-links');
+
+mobileMenuBtn.addEventListener('click', () => {
+  navLinks.classList.toggle('active');
+});
+
+// Close mobile menu when clicking on a link
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', () => {
+    navLinks.classList.remove('active');
+  });
+});
+
+// ===========================
+// Smooth Scrolling
+// ===========================
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    const href = this.getAttribute('href');
+    if (href !== '#') {
+      e.preventDefault();
+      const target = document.querySelector(href);
+      if (target) {
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    }
+  });
+});
+
+// ===========================
+// Navbar Scroll Effect
+// ===========================
+const navbar = document.getElementById('navbar');
+let lastScroll = 0;
+
+window.addEventListener('scroll', () => {
+  const currentScroll = window.pageYOffset;
+  
+  if (currentScroll > 100) {
+    const theme = htmlElement.getAttribute('data-theme');
+    if (theme === 'dark') {
+      navbar.style.background = 'rgba(5, 5, 5, 0.95)';
+    } else {
+      navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+    }
+  } else {
+    const theme = htmlElement.getAttribute('data-theme');
+    if (theme === 'dark') {
+      navbar.style.background = 'rgba(5, 5, 5, 0.8)';
+    } else {
+      navbar.style.background = 'rgba(255, 255, 255, 0.8)';
+    }
+  }
+  
+  lastScroll = currentScroll;
+});
+
+// ===========================
+// Render Internship Cards
+// ===========================
+function renderInternships() {
+  const internshipsList = document.getElementById('internships-list');
+  
+  internships.forEach(intern => {
+    const card = document.createElement('div');
+    card.className = 'tech-card experience-card';
+    
+    card.innerHTML = `
+      <div class="experience-header">
+        <h3>${intern.company}</h3>
+        <p class="experience-position">${intern.position}</p>
+        <div class="experience-meta">
+          <span>📍 ${intern.location}</span>
+          <span>📅 ${intern.period}</span>
+        </div>
+      </div>
+      <ul>
+        ${intern.description.map(desc => `<li>${desc}</li>`).join('')}
+      </ul>
+    `;
+    
+    internshipsList.appendChild(card);
+  });
+}
+
+// ===========================
+// Render Experience Cards
+// ===========================
+function renderExperience() {
+  const experienceList = document.getElementById('experience-list');
+  
+  experiences.forEach(exp => {
+    const card = document.createElement('div');
+    card.className = 'tech-card experience-card';
+    
+    card.innerHTML = `
+      <div class="experience-header">
+        <h3>${exp.organization}</h3>
+        <p class="experience-position">${exp.position}</p>
+        <div class="experience-meta">
+          <span>📍 ${exp.location}</span>
+          <span>📅 ${exp.period}</span>
+        </div>
+      </div>
+      <ul>
+        ${exp.description.map(desc => `<li>${desc}</li>`).join('')}
+      </ul>
+    `;
+    
+    experienceList.appendChild(card);
+  });
+}
+
+// ===========================
+// Render Project Cards
+// ===========================
+function renderProjects() {
+  const projectsGrid = document.getElementById('projects-grid');
+  
+  projects.forEach(project => {
+    const card = document.createElement('div');
+    card.className = 'tech-card project-card';
+    
+    card.innerHTML = `
+      <div class="project-header">
+        <div>
+          <h3 class="project-title">${project.title}</h3>
+          <p class="project-tech">${project.tech}</p>
+          <p class="project-date">${project.date}</p>
+        </div>
+      </div>
+      <ul>
+        ${project.description.map(desc => `<li>${desc}</li>`).join('')}
+      </ul>
+    `;
+    
+    projectsGrid.appendChild(card);
+  });
+}
+
+// ===========================
+// Scroll Animations
+// ===========================
+const observerOptions = {
+  threshold: 0.1,
+  rootMargin: '0px 0px -100px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+    }
+  });
+}, observerOptions);
+
+// Initialize animations on load
+document.addEventListener('DOMContentLoaded', () => {
+  // Render dynamic content
+  renderInternships();
+  renderExperience();
+  renderProjects();
+  
+  // Observe all cards for animation
+  const cards = document.querySelectorAll('.tech-card, .strength-item');
+  
+  cards.forEach(card => {
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(20px)';
+    card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(card);
+  });
+});
+
+// ===========================
+// Parallax Effect for Hero Glow
+// ===========================
+const heroGlow = document.querySelector('.hero-glow');
+
+if (heroGlow) {
+  window.addEventListener('scroll', () => {
+    const scrollY = window.pageYOffset;
+    heroGlow.style.transform = `translateX(-50%) translateY(${scrollY * 0.3}px)`;
+  });
+}
+    </script>
+</body>
+</html>
