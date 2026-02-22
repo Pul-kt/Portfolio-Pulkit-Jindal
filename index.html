@@ -1,930 +1,1043 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pulkit Jindal - Full Stack Developer</title>
-    
-    <!-- Meta tags for SEO -->
-    <meta name="description" content="Pulkit Jindal - Full Stack Developer specializing in scalable web applications, backend systems, and modern JavaScript technologies.">
-    <meta name="keywords" content="Full Stack Developer, Web Developer, JavaScript, Node.js, React, MongoDB, Backend Developer">
-    <meta name="author" content="Pulkit Jindal">
-    
-    <!-- Open Graph tags -->
-    <meta property="og:title" content="Pulkit Jindal - Full Stack Developer">
-    <meta property="og:description" content="Passionate Full Stack Developer creating exceptional digital experiences through clean code and innovative solutions.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://pulkitjindal.dev">
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- CSS -->
-    <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pulkit Jindal</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+:root {
+  --fs-xs:   clamp(0.78rem, 1.4vw, 0.88rem);
+  --fs-sm:   clamp(0.9rem,  1.8vw, 1.05rem);
+  --fs-base: clamp(1rem,    2vw,   1.15rem);
+  --fs-md:   clamp(1.1rem,  2.2vw, 1.3rem);
+  --fs-lg:   clamp(1.25rem, 2.5vw, 1.5rem);
+  --fs-xl:   clamp(1.5rem,  3vw,   2rem);
+  --fs-2xl:  clamp(1.8rem,  4vw,   2.6rem);
+  --fs-hero: clamp(2.8rem,  8vw,   5.5rem);
+}
+[data-theme="dark"] {
+  --bg:#0f0e0d; --bg-alt:#161412; --ink:#f0ece6; --muted:#8a8078;
+  --accent:#e05c2a; --accent-dim:#2d1a0e; --border:#2a2520;
+  --card-bg:#1a1714; --nav-bg:rgba(15,14,13,0.93); --shadow:0 8px 40px rgba(0,0,0,0.55);
+  --logo-filter: brightness(0) invert(1);
+  --logo-bg: rgba(255,255,255,0.06);
+}
+[data-theme="light"] {
+  --bg:#f9f7f4; --bg-alt:#ffffff; --ink:#1a1714; --muted:#6b6560;
+  --accent:#c04a1e; --accent-dim:#f0e8e3; --border:#e0dad4;
+  --card-bg:#ffffff; --nav-bg:rgba(249,247,244,0.93); --shadow:0 8px 30px rgba(0,0,0,0.08);
+  --logo-filter: none;
+  --logo-bg: rgba(0,0,0,0.04);
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{font-size:18px;}
+body{
+  font-family:'DM Sans',sans-serif; background:var(--bg); color:var(--ink);
+  font-size:var(--fs-base); line-height:1.7; -webkit-font-smoothing:antialiased;
+  transition:background 0.3s,color 0.3s; min-height:100vh;
+}
+
+/* NAV */
+nav{
+  position:sticky;top:0;z-index:200;
+  background:var(--nav-bg); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border);
+  padding:clamp(0.8rem,2vw,1.1rem) clamp(1.2rem,5vw,3rem);
+  display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  transition:background 0.3s,border-color 0.3s;
+}
+.nav-left{display:flex;align-items:center;gap:clamp(1.2rem,3vw,2.5rem);}
+.nav-brand{
+  font-family:'Playfair Display',serif; font-size:var(--fs-lg); font-weight:700;
+  color:var(--ink); text-decoration:none; letter-spacing:-0.02em; flex-shrink:0;
+}
+.nav-links{display:flex;gap:clamp(0.7rem,2vw,1.6rem);list-style:none;flex-wrap:wrap;}
+.nav-links a{font-size:var(--fs-sm);color:var(--muted);text-decoration:none;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover,.nav-links a.active{color:var(--accent);}
+.theme-toggle{
+  display:flex;align-items:center;gap:0.45em;
+  background:var(--card-bg);border:1px solid var(--border);border-radius:100px;
+  padding:0.38em 1em;cursor:pointer;font-size:var(--fs-xs);
+  font-family:'DM Sans',sans-serif;font-weight:600;color:var(--muted);
+  white-space:nowrap;flex-shrink:0;
+  transition:background 0.2s,border-color 0.2s,color 0.2s;
+}
+.theme-toggle:hover{color:var(--accent);border-color:var(--accent);}
+
+/* PAGES */
+.page{display:none;animation:fadeIn 0.3s ease;}
+.page.active{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+
+/* LAYOUT */
+.section-wrap{padding:clamp(3rem,8vw,6rem) clamp(1.2rem,6vw,3.5rem);}
+.section-wrap.alt{background:var(--bg-alt);}
+.container{max-width:960px;margin:0 auto;}
+.section-label{font-size:var(--fs-xs);font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);margin-bottom:0.5rem;}
+.section-title{font-family:'Playfair Display',serif;font-size:var(--fs-2xl);font-weight:700;letter-spacing:-0.02em;color:var(--ink);margin-bottom:2.5rem;line-height:1.15;}
+.back-link{display:inline-flex;align-items:center;gap:0.4em;font-size:var(--fs-sm);color:var(--muted);text-decoration:none;font-weight:500;margin-bottom:2rem;transition:color 0.2s;}
+.back-link:hover{color:var(--accent);}
+
+/* ── HERO ── */
+.hero-page{
+  min-height:calc(100vh - 62px);display:flex;flex-direction:column;justify-content:center;
+  padding:clamp(3rem,8vw,6rem) clamp(1.2rem,6vw,3.5rem);
+  position:relative;overflow:hidden;
+}
+.hero-page::before{
+  content:'';position:absolute;top:-60px;right:-80px;
+  width:clamp(220px,45vw,500px);height:clamp(220px,45vw,500px);
+  background:radial-gradient(circle,rgba(224,92,42,0.13) 0%,transparent 70%);
+  pointer-events:none;
+}
+.hero-eyebrow{font-size:var(--fs-sm);color:var(--accent);font-weight:600;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:1rem;}
+.hero-name{font-family:'Playfair Display',serif;font-size:var(--fs-hero);font-weight:700;line-height:1.05;letter-spacing:-0.03em;color:var(--ink);margin-bottom:1.2rem;}
+.hero-sub{font-size:var(--fs-md);color:var(--muted);font-weight:300;max-width:560px;margin-bottom:2.5rem;line-height:1.65;}
+.hero-tags{display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:2.5rem;}
+.tag{font-size:var(--fs-xs);font-weight:500;background:var(--accent-dim);color:var(--accent);border-radius:100px;padding:0.35em 1em;letter-spacing:0.03em;}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:1rem;align-items:center;}
+.btn-primary{
+  display:inline-flex;align-items:center;gap:0.4em;
+  background:var(--accent);color:#fff;font-family:'DM Sans',sans-serif;
+  font-size:var(--fs-sm);font-weight:600;padding:0.85em 1.8em;border-radius:4px;
+  text-decoration:none;letter-spacing:0.02em;transition:opacity 0.2s,transform 0.2s;
+  cursor:pointer;border:none;
+}
+.btn-primary:hover{opacity:0.85;transform:translateY(-2px);}
+.btn-link{
+  font-size:var(--fs-sm);color:var(--muted);text-decoration:none;font-weight:500;
+  display:inline-flex;align-items:center;gap:0.3em;
+  border-bottom:1.5px solid var(--border);padding-bottom:1px;
+  transition:border-color 0.2s,color 0.2s;
+}
+.btn-link:hover{color:var(--accent);border-color:var(--accent);}
+
+/* LOGOS STRIP on hero */
+.hero-logos{
+  margin-top:3.5rem;
+  display:flex;flex-direction:column;gap:0.7rem;
+}
+.hero-logos-label{font-size:var(--fs-xs);color:var(--muted);font-weight:500;letter-spacing:0.1em;text-transform:uppercase;}
+.hero-logos-row{
+  display:flex;align-items:center;flex-wrap:wrap;gap:1.2rem;
+}
+.hero-logo-chip{
+  display:flex;align-items:center;gap:0.55rem;
+  background:var(--logo-bg);border:1px solid var(--border);
+  border-radius:6px;padding:0.45rem 0.9rem;
+  font-size:var(--fs-xs);color:var(--muted);font-weight:500;
+  transition:border-color 0.2s;
+}
+.hero-logo-chip:hover{border-color:var(--accent);}
+.hero-logo-chip img{width:18px;height:18px;object-fit:contain;border-radius:2px;}
+
+/* HOME NAV CARDS */
+.home-nav-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,200px),1fr));gap:1rem;margin-top:3.5rem;}
+.home-nav-card{
+  background:var(--card-bg);border:1px solid var(--border);border-radius:8px;
+  padding:1.4rem 1.6rem;text-decoration:none;color:var(--ink);
+  display:flex;flex-direction:column;gap:0.3rem;
+  transition:border-color 0.2s,transform 0.2s,box-shadow 0.2s;cursor:pointer;
+}
+.home-nav-card:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:var(--shadow);}
+.home-nav-card-label{font-size:var(--fs-xs);color:var(--accent);font-weight:600;letter-spacing:0.1em;text-transform:uppercase;}
+.home-nav-card-title{font-family:'Playfair Display',serif;font-size:var(--fs-lg);font-weight:600;}
+.home-nav-card-arrow{font-size:var(--fs-lg);color:var(--border);margin-top:auto;padding-top:0.5rem;transition:color 0.2s;}
+.home-nav-card:hover .home-nav-card-arrow{color:var(--accent);}
+
+/* ── EXPERIENCE ── */
+.exp-list{display:flex;flex-direction:column;}
+.exp-item{
+  display:grid;grid-template-columns:minmax(80px,140px) 1fr;
+  gap:0 clamp(1.5rem,4vw,3rem);
+  padding:clamp(1.5rem,3vw,2.2rem) 0;
+  border-top:1px solid var(--border);align-items:start;
+}
+.exp-item:last-child{border-bottom:1px solid var(--border);}
+.exp-left{display:flex;flex-direction:column;gap:0.7rem;align-items:flex-start;padding-top:0.2rem;}
+.exp-period{font-size:var(--fs-xs);color:var(--muted);line-height:1.5;}
+
+/* LOGO BOX */
+.logo-box{
+  width:48px;height:48px;border-radius:8px;
+  background:var(--logo-bg);border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;flex-shrink:0;
+}
+.logo-box img{width:36px;height:36px;object-fit:contain;}
+.logo-box svg{width:32px;height:32px;}
+
+/* Large logo box for bigger display */
+.logo-box-lg{
+  width:56px;height:56px;border-radius:10px;
+  background:var(--logo-bg);border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;flex-shrink:0;
+}
+.logo-box-lg img{width:44px;height:44px;object-fit:contain;}
+
+.exp-company{font-family:'Playfair Display',serif;font-size:var(--fs-lg);font-weight:600;color:var(--ink);margin-bottom:0.2rem;}
+.exp-role{font-size:var(--fs-sm);color:var(--accent);font-weight:600;margin-bottom:0.8rem;}
+.exp-bullets{list-style:none;display:flex;flex-direction:column;gap:0.35rem;}
+.exp-bullets li{font-size:var(--fs-sm);color:var(--muted);padding-left:1.2em;position:relative;line-height:1.6;}
+.exp-bullets li::before{content:'—';position:absolute;left:0;color:var(--accent);font-size:0.85em;}
+
+/* ── PROJECTS ── */
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:clamp(1rem,3vw,1.5rem);}
+.project-card{
+  background:var(--card-bg);border:1px solid var(--border);border-radius:8px;
+  padding:clamp(1.4rem,3vw,2rem);display:flex;flex-direction:column;gap:0.75rem;
+  transition:box-shadow 0.25s,transform 0.25s,border-color 0.25s;
+}
+.project-card:hover{box-shadow:var(--shadow);transform:translateY(-3px);border-color:var(--accent);}
+.project-card-header{display:flex;align-items:center;justify-content:space-between;gap:1rem;}
+.project-year{font-size:var(--fs-xs);color:var(--accent);font-weight:600;letter-spacing:0.06em;}
+.project-logo{width:36px;height:36px;border-radius:6px;background:var(--logo-bg);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0;}
+.project-logo img{width:26px;height:26px;object-fit:contain;}
+.project-logo svg{width:24px;height:24px;}
+.project-name{font-family:'Playfair Display',serif;font-size:var(--fs-xl);font-weight:600;line-height:1.25;color:var(--ink);}
+.project-desc{font-size:var(--fs-sm);color:var(--muted);line-height:1.65;}
+.project-bullets{list-style:none;display:flex;flex-direction:column;gap:0.3rem;}
+.project-bullets li{font-size:var(--fs-xs);color:var(--muted);padding-left:1em;position:relative;line-height:1.55;}
+.project-bullets li::before{content:'·';position:absolute;left:0;color:var(--accent);font-size:1.4em;line-height:0.9;}
+.project-tags{display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:auto;padding-top:0.5rem;}
+.tech-tag{font-size:var(--fs-xs);background:var(--accent-dim);color:var(--accent);border-radius:3px;padding:0.2em 0.7em;font-weight:500;}
+
+/* ── ABOUT ── */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4rem);align-items:start;}
+.about-bio{font-size:var(--fs-md);color:var(--ink);line-height:1.78;font-weight:300;}
+.about-bio strong{font-weight:600;}
+.about-bio p+p{margin-top:1.2rem;}
+.about-facts{display:flex;flex-direction:column;gap:1.2rem;}
+.fact-row{display:flex;flex-direction:column;gap:0.2rem;}
+.fact-label{font-size:var(--fs-xs);font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);}
+.fact-value{font-size:var(--fs-sm);color:var(--ink);}
+
+/* ACHIEVEMENTS / BADGE CARDS */
+.achievements-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr));gap:1rem;margin-top:2rem;}
+.achievement-card{
+  background:var(--card-bg);border:1px solid var(--border);border-radius:8px;
+  padding:1.3rem 1.5rem;display:flex;align-items:center;gap:1rem;
+  transition:border-color 0.2s,transform 0.2s;
+}
+.achievement-card:hover{border-color:var(--accent);transform:translateY(-2px);}
+.achievement-logo{width:44px;height:44px;border-radius:8px;background:var(--logo-bg);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0;}
+.achievement-logo img{width:32px;height:32px;object-fit:contain;}
+.achievement-logo svg{width:30px;height:30px;}
+.achievement-info{display:flex;flex-direction:column;gap:0.15rem;}
+.achievement-name{font-size:var(--fs-sm);font-weight:600;color:var(--ink);line-height:1.3;}
+.achievement-sub{font-size:var(--fs-xs);color:var(--muted);}
+
+/* TIMELINE */
+.timeline{display:flex;flex-direction:column;position:relative;}
+.timeline::before{content:'';position:absolute;left:116px;top:0;bottom:0;width:1px;background:var(--border);}
+.timeline-item{display:grid;grid-template-columns:116px 1fr;gap:0 clamp(1.5rem,4vw,2.5rem);padding:clamp(1.2rem,2.5vw,1.8rem) 0;position:relative;}
+.timeline-year{font-family:'Playfair Display',serif;font-size:var(--fs-xl);font-weight:700;color:var(--accent);line-height:1.3;text-align:right;}
+.timeline-dot{position:absolute;left:110px;top:calc(clamp(1.2rem,2.5vw,1.8rem) + 0.35em);width:13px;height:13px;border-radius:50%;background:var(--accent);border:3px solid var(--bg);box-shadow:0 0 0 1px var(--accent);z-index:1;}
+.timeline-content{padding-left:1rem;}
+.timeline-header{display:flex;align-items:center;gap:0.8rem;margin-bottom:0.4rem;}
+.timeline-logo{width:32px;height:32px;border-radius:6px;background:var(--logo-bg);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0;}
+.timeline-logo img{width:24px;height:24px;object-fit:contain;}
+.timeline-logo svg{width:20px;height:20px;}
+.timeline-title{font-family:'Playfair Display',serif;font-size:var(--fs-lg);font-weight:600;color:var(--ink);line-height:1.3;}
+.timeline-desc{font-size:var(--fs-sm);color:var(--muted);line-height:1.65;}
+
+/* BLOG */
+.blog-list{display:flex;flex-direction:column;}
+.blog-item{
+  padding:clamp(1.5rem,3vw,2rem) 0;border-top:1px solid var(--border);
+  display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-start;gap:1rem;
+  cursor:pointer;transition:border-top-color 0.2s;
+}
+.blog-item:last-child{border-bottom:1px solid var(--border);}
+.blog-item:hover{border-top-color:var(--accent);}
+.blog-item:hover .blog-title{color:var(--accent);}
+.blog-meta{display:flex;flex-wrap:wrap;gap:0.8rem;margin-bottom:0.4rem;align-items:center;}
+.blog-category{font-size:var(--fs-xs);color:var(--accent);font-weight:600;letter-spacing:0.06em;text-transform:uppercase;}
+.blog-date{font-size:var(--fs-xs);color:var(--muted);}
+.blog-title{font-family:'Playfair Display',serif;font-size:var(--fs-xl);font-weight:600;line-height:1.3;color:var(--ink);transition:color 0.2s;max-width:680px;}
+.blog-desc{font-size:var(--fs-sm);color:var(--muted);margin-top:0.4rem;max-width:600px;line-height:1.65;}
+.blog-arrow{font-size:var(--fs-xl);color:var(--border);transition:color 0.2s,transform 0.2s;flex-shrink:0;align-self:center;}
+.blog-item:hover .blog-arrow{color:var(--accent);transform:translateX(4px);}
+
+/* BLOG POST */
+.post-header{margin-bottom:2.5rem;padding-bottom:2rem;border-bottom:1px solid var(--border);}
+.post-header .blog-category{font-size:var(--fs-xs);color:var(--accent);font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.6rem;display:block;}
+.post-title{font-family:'Playfair Display',serif;font-size:var(--fs-2xl);font-weight:700;color:var(--ink);line-height:1.15;letter-spacing:-0.02em;}
+.post-body{display:flex;flex-direction:column;gap:1.3rem;max-width:700px;}
+.post-body p{font-size:var(--fs-md);color:var(--muted);line-height:1.82;font-weight:300;}
+.post-body p strong{color:var(--ink);font-weight:600;}
+.post-summary{background:var(--accent-dim);border-left:3px solid var(--accent);border-radius:4px;padding:1.3rem 1.6rem;}
+.post-summary-title{font-size:var(--fs-sm);font-weight:700;color:var(--ink);margin-bottom:0.8rem;}
+.post-summary ol{padding-left:1.4em;display:flex;flex-direction:column;gap:0.5rem;}
+.post-summary li{font-size:var(--fs-sm);color:var(--muted);line-height:1.65;}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,200px),1fr));gap:2rem;margin-bottom:3rem;}
+.contact-item-label{font-size:var(--fs-xs);font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:0.3rem;}
+.contact-item-value{font-size:var(--fs-md);}
+.contact-item-value a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--border);padding-bottom:1px;transition:border-color 0.2s,color 0.2s;}
+.contact-item-value a:hover{color:var(--accent);border-color:var(--accent);}
+
+/* FOOTER */
+footer{text-align:center;font-size:var(--fs-xs);color:var(--muted);padding:1.5rem;border-top:1px solid var(--border);background:var(--bg);}
+
+/* RESPONSIVE */
+@media(max-width:700px){
+  .exp-item{grid-template-columns:1fr;gap:0.5rem;}
+  .exp-left{flex-direction:row;align-items:center;gap:0.8rem;}
+  .about-grid{grid-template-columns:1fr;}
+  .timeline::before{left:0;}
+  .timeline-item{grid-template-columns:1fr;}
+  .timeline-year{text-align:left;font-size:var(--fs-lg);}
+  .timeline-dot{display:none;}
+  .timeline-content{padding-left:0;}
+  .nav-links{gap:0.6rem;}
+}
+@media(max-width:520px){
+  .blog-item{flex-direction:column;}
+  .home-nav-grid{grid-template-columns:1fr 1fr;}
+  .nav-links li:nth-child(n+4){display:none;}
+}
+</style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar" id="navbar">
-        <div class="nav-container container">
-            <div class="nav-logo">
-                <span class="logo-text">Pulkit</span><span class="logo-accent">.</span>
+
+<nav>
+  <div class="nav-left">
+    <a href="#" class="nav-brand" onclick="navigate('home');return false;">PJ</a>
+    <ul class="nav-links">
+      <li><a href="#work"     onclick="navigate('work');return false;">Work</a></li>
+      <li><a href="#projects" onclick="navigate('projects');return false;">Projects</a></li>
+      <li><a href="#about"    onclick="navigate('about');return false;">About</a></li>
+      <li><a href="#blog"     onclick="navigate('blog');return false;">Blog</a></li>
+      <li><a href="#contact"  onclick="navigate('contact');return false;">Contact</a></li>
+    </ul>
+  </div>
+  <button class="theme-toggle" onclick="toggleTheme()">
+    <span id="toggle-icon">☀️</span>
+    <span id="toggle-label">Light</span>
+  </button>
+</nav>
+
+<!-- ══════════════════════════════════════
+     PAGE: HOME
+═══════════════════════════════════════ -->
+<div class="page" id="page-home">
+  <div class="hero-page">
+    <div class="hero-eyebrow">Business Analyst · Consultant · DTU '26</div>
+    <h1 class="hero-name">Pulkit Jindal</h1>
+    <p class="hero-sub">Final-year student at Delhi Technological University, currently interning at Bain&nbsp;&amp;&nbsp;Company. I turn messy data into clear strategy — through structured thinking, financial modeling, and sharp storytelling.</p>
+    <div class="hero-tags">
+      <span class="tag">Market Research</span>
+      <span class="tag">Financial Modeling</span>
+      <span class="tag">Data Storytelling</span>
+      <span class="tag">Excel · Python · Power BI</span>
+    </div>
+    <div class="hero-ctas">
+      <button class="btn-primary" onclick="navigate('contact')">Get in touch →</button>
+      <a href="https://linkedin.com" target="_blank" class="btn-link">LinkedIn ↗</a>
+      <a href="https://github.com" target="_blank" class="btn-link">GitHub ↗</a>
+    </div>
+
+    <!-- Logos strip -->
+    <div class="hero-logos">
+      <span class="hero-logos-label">Currently &amp; previously at</span>
+      <div class="hero-logos-row">
+        <div class="hero-logo-chip">
+          <img src="https://logo.clearbit.com/bain.com" alt="Bain" onerror="this.src='data:image/svg+xml,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 32 32\'><text y=\'22\' font-size=\'18\' fill=\'%23cc3333\'>B</text></svg>'">
+          Bain &amp; Company
+        </div>
+        <div class="hero-logo-chip">
+          <!-- DTU custom SVG seal style -->
+          <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" width="18" height="18">
+            <circle cx="16" cy="16" r="15" fill="#003580" stroke="#c8a84b" stroke-width="1.5"/>
+            <text x="16" y="13" text-anchor="middle" font-family="serif" font-size="7" font-weight="bold" fill="#c8a84b">DTU</text>
+            <text x="16" y="22" text-anchor="middle" font-family="serif" font-size="3.8" fill="#ffffff">DELHI TECH</text>
+          </svg>
+          DTU Delhi
+        </div>
+        <div class="hero-logo-chip">
+          <img src="https://logo.clearbit.com/mckinsey.org" alt="McKinsey" onerror="this.src='data:image/svg+xml,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 32 32\'><text y=\'22\' font-size=\'16\' fill=\'%230066cc\'>M</text></svg>'">
+          McKinsey.org Forward
+        </div>
+        <div class="hero-logo-chip">
+          <!-- Internshala icon -->
+          <img src="https://logo.clearbit.com/internshala.com" alt="Internshala" onerror="this.src='data:image/svg+xml,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 32 32\'><rect width=\'32\' height=\'32\' rx=\'6\' fill=\'%2300bcd4\'/><text x=\'16\' y=\'22\' text-anchor=\'middle\' font-size=\'16\' fill=\'white\'>I</text></svg>'">
+          Internshala Ambassador
+        </div>
+      </div>
+    </div>
+
+    <div class="home-nav-grid">
+      <div class="home-nav-card" onclick="navigate('work')">
+        <span class="home-nav-card-label">Career</span>
+        <span class="home-nav-card-title">Work Experience</span>
+        <span class="home-nav-card-arrow">→</span>
+      </div>
+      <div class="home-nav-card" onclick="navigate('projects')">
+        <span class="home-nav-card-label">Portfolio</span>
+        <span class="home-nav-card-title">Projects</span>
+        <span class="home-nav-card-arrow">→</span>
+      </div>
+      <div class="home-nav-card" onclick="navigate('about')">
+        <span class="home-nav-card-label">Background</span>
+        <span class="home-nav-card-title">About Me</span>
+        <span class="home-nav-card-arrow">→</span>
+      </div>
+      <div class="home-nav-card" onclick="navigate('blog')">
+        <span class="home-nav-card-label">Writing</span>
+        <span class="home-nav-card-title">Blog</span>
+        <span class="home-nav-card-arrow">→</span>
+      </div>
+      <div class="home-nav-card" onclick="navigate('contact')">
+        <span class="home-nav-card-label">Let's talk</span>
+        <span class="home-nav-card-title">Contact</span>
+        <span class="home-nav-card-arrow">→</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE: WORK
+═══════════════════════════════════════ -->
+<div class="page" id="page-work">
+  <div class="section-wrap">
+    <div class="container">
+      <a class="back-link" href="#" onclick="navigate('home');return false;">← Home</a>
+      <p class="section-label">Career</p>
+      <h2 class="section-title">Work Experience</h2>
+      <div class="exp-list">
+
+        <!-- Bain -->
+        <div class="exp-item">
+          <div class="exp-left">
+            <div class="logo-box-lg">
+              <img src="https://logo.clearbit.com/bain.com" alt="Bain & Company"
+                onerror="this.style.display='none';this.parentElement.innerHTML='<svg viewBox=\'0 0 44 44\' xmlns=\'http://www.w3.org/2000/svg\'><rect width=\'44\' height=\'44\' rx=\'6\' fill=\'%23cc0000\'/><text x=\'22\' y=\'30\' text-anchor=\'middle\' font-family=\'Arial\' font-size=\'22\' font-weight=\'bold\' fill=\'white\'>B</text></svg>'">
             </div>
-            
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="#home" class="nav-link active">Home</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#projects" class="nav-link">Projects</a></li>
-                <li><a href="#skills" class="nav-link">Skills</a></li>
-                <li><a href="#experience" class="nav-link">Experience</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
+            <span class="exp-period">Jan 2026 – Present</span>
+          </div>
+          <div>
+            <div class="exp-company">Bain &amp; Company</div>
+            <div class="exp-role">Analyst Intern · Gurugram</div>
+            <ul class="exp-bullets">
+              <li>Market sizing, competitor benchmarking &amp; financial analysis</li>
+              <li>Excel modeling and slide-based storytelling for exec-ready deliverables</li>
             </ul>
-            
-            <div class="nav-actions">
-                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-                    <i class="fas fa-moon"></i>
-                </button>
-                
-                <div class="hamburger" id="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </div>
+          </div>
         </div>
-    </nav>
 
-    <!-- Social Sidebar -->
-    <aside class="social-sidebar">
-        <a href="https://github.com/Pul-kt" target="_blank" rel="noopener" class="social-link">
-            <i class="fab fa-github"></i>
-        </a>
-        <a href="https://www.linkedin.com/in/pulkitjindal30/" target="_blank" rel="noopener" class="social-link">
-            <i class="fab fa-linkedin"></i>
-        </a>
-        <a href="https://leetcode.com/u/_pullkit_jindal/" target="_blank" rel="noopener" class="social-link">
-            <i class="fas fa-code"></i>
-        </a>
-        <div class="social-line"></div>
-    </aside>
-
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="container">
-            <div class="hero-container">
-                <div class="hero-content">
-                    <div class="hero-badge">
-                        <span class="status-indicator">🟢</span>
-                        Available for opportunities
-                    </div>
-                    
-                    <h1 class="hero-title">
-                        <span class="title-line">Hi, I'm</span>
-                        <span class="title-name">Pulkit Jindal</span>
-                        <span class="title-role">Software Engineer</span>
-                    </h1>
-                    
-                    <p class="hero-description">
-                        I craft exceptional digital experiences through clean code and 
-                        innovative solutions. Currently pursuing Electrical Engineering 
-                        at DTU while building scalable web applications that solve real-world problems.
-                    </p>
-                    
-                    <div class="hero-stats">
-                        <div class="stat-card">
-                            <span class="stat-number">300+</span>
-                            <span class="stat-label">LeetCode Solved</span>
-                        </div>
-                        <div class="stat-card">
-                            <span class="stat-number">10+</span>
-                            <span class="stat-label">APIs Built</span>
-                        </div>
-                        <div class="stat-card">
-                            <span class="stat-number">25%</span>
-                            <span class="stat-label">Performance Boost</span>
-                        </div>
-                    </div>
-                    
-                    <div class="hero-actions">
-                        <a href="#projects" class="btn btn-primary">
-                            <i class="fas fa-eye"></i>
-                            View My Work
-                        </a>
-                        <a href="#contact" class="btn btn-secondary">
-                            <i class="fas fa-phone"></i>
-                            Get In Touch
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="hero-visual">
-                    <div class="code-block">
-                        <div class="code-header">
-                            <div class="code-dots">
-                                <div class="dot red"></div>
-                                <div class="dot yellow"></div>
-                                <div class="dot green"></div>
-                            </div>
-                            <span class="code-title">developer.js</span>
-                        </div>
-                        <div class="code-content">
-                            <div class="code-line">
-                                <span class="line-num">01</span>
-                                <span class="code-text">
-                                    <span class="keyword">const</span> 
-                                    <span class="variable">developer</span> = {
-                                </span>
-                            </div>
-                            <div class="code-line">
-                                <span class="line-num">02</span>
-                                <span class="code-text">
-                                    &nbsp;&nbsp;<span class="property">name:</span> 
-                                    <span class="string">'Pulkit Jindal'</span>,
-                                </span>
-                            </div>
-                            <div class="code-line">
-                                <span class="line-num">03</span>
-                                <span class="code-text">
-                                    &nbsp;&nbsp;<span class="property">skills:</span> 
-                                    [<span class="string">'React'</span>, <span class="string">'Node.js'</span>],
-                                </span>
-                            </div>
-                            <div class="code-line">
-                                <span class="line-num">04</span>
-                                <span class="code-text">
-                                    &nbsp;&nbsp;<span class="property">location:</span> 
-                                    <span class="string">'Delhi, India'</span>,
-                                </span>
-                            </div>
-                            <div class="code-line">
-                                <span class="line-num">05</span>
-                                <span class="code-text">
-                                    &nbsp;&nbsp;<span class="property">passion:</span> 
-                                    <span class="string">'Building Amazing Apps'</span>
-                                </span>
-                            </div>
-                            <div class="code-line">
-                                <span class="line-num">06</span>
-                                <span class="code-text">};</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <!-- Fintegic -->
+        <div class="exp-item">
+          <div class="exp-left">
+            <div class="logo-box-lg">
+              <!-- Custom F icon for Fintegic -->
+              <svg viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
+                <rect width="44" height="44" rx="8" fill="#1e3a5f"/>
+                <text x="22" y="30" text-anchor="middle" font-family="Georgia,serif" font-size="24" font-weight="bold" fill="#4db8ff">F</text>
+              </svg>
             </div>
+            <span class="exp-period">May – Jul 2025</span>
+          </div>
+          <div>
+            <div class="exp-company">Fintegic Business Consulting</div>
+            <div class="exp-role">Analyst Intern · Remote</div>
+            <ul class="exp-bullets">
+              <li>Requirement study, process analysis &amp; operational workflow improvements</li>
+            </ul>
+          </div>
         </div>
-    </section>
 
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-number">01.</span>
-                <h2 class="section-title">About Me</h2>
-                <div class="section-line"></div>
+        <!-- Ambey -->
+        <div class="exp-item">
+          <div class="exp-left">
+            <div class="logo-box-lg">
+              <svg viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
+                <rect width="44" height="44" rx="8" fill="#1a4a1a"/>
+                <text x="22" y="30" text-anchor="middle" font-family="Georgia,serif" font-size="22" font-weight="bold" fill="#66cc66">A</text>
+              </svg>
             </div>
-            
-            <div class="about-grid">
-                <div class="about-content">
-                    <div class="about-text">
-                        <p class="lead">
-                            I'm a passionate <strong>Full Stack Developer</strong> currently pursuing my Bachelor's in 
-                            <strong>Electrical Engineering</strong> at Delhi Technological University.
-                        </p>
-                        
-                        <p>
-                            What started as curiosity about how things work has evolved into a love for 
-                            creating digital experiences that make a difference.
-                        </p>
-                        
-                        <p>
-                            My journey spans from optimizing server performance by 
-                            <strong>25%</strong> to building real-time applications that support <strong>100+ concurrent users</strong>. I believe 
-                            in writing clean, maintainable code and creating solutions that not only work 
-                            but work beautifully.
-                        </p>
-                        
-                        <p>
-                            When I'm not coding, you'll find me solving algorithmic challenges on LeetCode (300+ problems solved!), 
-                            contributing to open-source projects, or exploring the latest in web technologies.
-                        </p>
-                    </div>
-                    
-                    <div class="tech-grid">
-                        <h4>Technologies I work with:</h4>
-                        <div class="tech-list">
-                            <div class="tech-item">JavaScript</div>
-                            <div class="tech-item">TypeScript</div>
-                            <div class="tech-item">React</div>
-                            <div class="tech-item">Node.js</div>
-                            <div class="tech-item">Express</div>
-                            <div class="tech-item">MongoDB</div>
-                            <div class="tech-item">PostgreSQL</div>
-                            <div class="tech-item">Docker</div>
-                            <div class="tech-item">AWS</div>
-                            <div class="tech-item">Git</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="profile-card">
-                    <div class="profile-header">
-                        <div class="profile-avatar">
-                            <i class="fas fa-user-astronaut"></i>
-                        </div>
-                        <div class="profile-info">
-                            <h3>Pulkit Jindal</h3>
-                            <p>Full Stack Developer</p>
-                            <p class="profile-status">🟢 Available for work</p>
-                        </div>
-                    </div>
-                    
-                    <div class="profile-stats">
-                        <div class="profile-stat">
-                            <span class="stat-label">Experience</span>
-                            <span class="stat-value">2+ Years</span>
-                        </div>
-                        <div class="profile-stat">
-                            <span class="stat-label">Projects</span>
-                            <span class="stat-value">15+ Completed</span>
-                        </div>
-                        <div class="profile-stat">
-                            <span class="stat-label">Technologies</span>
-                            <span class="stat-value">10+ Mastered</span>
-                        </div>
-                        <div class="profile-stat">
-                            <span class="stat-label">Coffee Consumed</span>
-                            <span class="stat-value">∞</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <span class="exp-period">May – Aug 2024</span>
+          </div>
+          <div>
+            <div class="exp-company">Ambey Polymers</div>
+            <div class="exp-role">Business Analyst Intern · Remote</div>
+            <ul class="exp-bullets">
+              <li>Analysed 10K+ daily transactions — reduced turnaround time by 35%</li>
+              <li>Built real-time dashboards monitoring KPIs across 15+ microservices</li>
+            </ul>
+          </div>
         </div>
-    </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="projects">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-number">02.</span>
-                <h2 class="section-title">Featured Projects</h2>
-                <div class="section-line"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE: PROJECTS
+═══════════════════════════════════════ -->
+<div class="page" id="page-projects">
+  <div class="section-wrap">
+    <div class="container">
+      <a class="back-link" href="#" onclick="navigate('home');return false;">← Home</a>
+      <p class="section-label">Portfolio</p>
+      <h2 class="section-title">Featured Projects</h2>
+      <div class="projects-grid">
+
+        <!-- Coffee Shop -->
+        <div class="project-card">
+          <div class="project-card-header">
+            <div class="project-year">January 2025</div>
+            <div class="project-logo">
+              <!-- Excel green icon -->
+              <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                <rect width="32" height="32" rx="4" fill="#217346"/>
+                <text x="16" y="22" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="white">X</text>
+              </svg>
             </div>
-            
-            <div class="projects-grid">
-                <!-- Featured Project -->
-                <div class="project-card featured">
-                    <div class="project-image">
-                        <div class="project-placeholder">
-                            <i class="fas fa-chess"></i>
-                        </div>
-                        <div class="project-overlay">
-                            <div class="overlay-content">
-                                <div class="project-links">
-                                    <a href="#" class="project-link" title="View Live">
-                                        <i class="fas fa-external-link-alt"></i>
-                                    </a>
-                                    <a href="#" class="project-link" title="View Code">
-                                        <i class="fab fa-github"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="project-info">
-                        <div class="project-category">Featured Project</div>
-                        <h3 class="project-title">Real-Time Chess Platform</h3>
-                        <p class="project-description">
-                            A sophisticated real-time multiplayer chess platform built with WebSocket technology. 
-                            Features instant game synchronization, spectator mode, and optimized performance 
-                            supporting 100+ concurrent players.
-                        </p>
-                        
-                        <div class="project-tech">
-                            <span class="tech-tag">React</span>
-                            <span class="tech-tag">Node.js</span>
-                            <span class="tech-tag">Socket.io</span>
-                            <span class="tech-tag">MongoDB</span>
-                            <span class="tech-tag">Docker</span>
-                        </div>
-                        
-                        <div class="project-highlight">
-                            <i class="fas fa-users"></i>
-                            Supports 100+ concurrent users
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Regular Projects -->
-                <div class="project-card">
-                    <div class="project-image">
-                        <div class="project-placeholder">
-                            <i class="fas fa-calculator"></i>
-                        </div>
-                        <div class="project-overlay">
-                            <div class="overlay-content">
-                                <div class="project-links">
-                                    <a href="#" class="project-link" title="View Live">
-                                        <i class="fas fa-external-link-alt"></i>
-                                    </a>
-                                    <a href="#" class="project-link" title="View Code">
-                                        <i class="fab fa-github"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="project-info">
-                        <div class="project-category">Web Application</div>
-                        <h3 class="project-title">Smart Expense Tracker</h3>
-                        <p class="project-description">
-                            Advanced expense-sharing platform with optimized debt settlement algorithm. 
-                            Reduced computational complexity from O(n²) to O(n) using greedy algorithms.
-                        </p>
-                        
-                        <div class="project-tech">
-                            <span class="tech-tag">React</span>
-                            <span class="tech-tag">Express</span>
-                            <span class="tech-tag">PostgreSQL</span>
-                            <span class="tech-tag">AWS</span>
-                        </div>
-                        
-                        <div class="project-highlight">
-                            <i class="fas fa-chart-line"></i>
-                            O(n) algorithm optimization
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="project-card">
-                    <div class="project-image">
-                        <div class="project-placeholder">
-                            <i class="fas fa-server"></i>
-                        </div>
-                        <div class="project-overlay">
-                            <div class="overlay-content">
-                                <div class="project-links">
-                                    <a href="#" class="project-link" title="View Code">
-                                        <i class="fab fa-github"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="project-info">
-                        <div class="project-category">Backend System</div>
-                        <h3 class="project-title">Scalable API Infrastructure</h3>
-                        <p class="project-description">
-                            Engineered 10+ RESTful APIs with MongoDB integration, deployed via Docker containers 
-                            on AWS EC2 instances for high-performance applications.
-                        </p>
-                        
-                        <div class="project-tech">
-                            <span class="tech-tag">Node.js</span>
-                            <span class="tech-tag">Express</span>
-                            <span class="tech-tag">MongoDB</span>
-                            <span class="tech-tag">Docker</span>
-                            <span class="tech-tag">AWS EC2</span>
-                        </div>
-                        
-                        <div class="project-highlight">
-                            <i class="fas fa-rocket"></i>
-                            25% performance improvement
-                        </div>
-                    </div>
-                </div>
-            </div>
+          </div>
+          <div class="project-name">Coffee Shop Analytics Dashboard</div>
+          <div class="project-desc">Interactive Excel dashboard tracking $698K in sales, 149K footfall, and trend-based KPIs across multiple locations.</div>
+          <ul class="project-bullets">
+            <li>Tracked $698K in total sales and 149K customer footfall</li>
+            <li>Identified peak hours and top-performing products with trend analysis</li>
+            <li>Used Power Query for automated data transformation</li>
+            <li>Interactive slicers for filtering by location, date, and category</li>
+          </ul>
+          <div class="project-tags">
+            <span class="tech-tag">Excel</span>
+            <span class="tech-tag">Power Query</span>
+            <span class="tech-tag">Pivot Tables</span>
+            <span class="tech-tag">Data Visualization</span>
+          </div>
         </div>
-    </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="skills">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-number">03.</span>
-                <h2 class="section-title">Skills & Technologies</h2>
-                <div class="section-line"></div>
+        <!-- Bank Loan -->
+        <div class="project-card">
+          <div class="project-card-header">
+            <div class="project-year">April 2024</div>
+            <div class="project-logo">
+              <!-- Power BI yellow icon -->
+              <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                <rect width="32" height="32" rx="4" fill="#f2c811"/>
+                <rect x="7" y="18" width="4" height="8" rx="1" fill="#1a1a1a"/>
+                <rect x="14" y="12" width="4" height="14" rx="1" fill="#1a1a1a"/>
+                <rect x="21" y="7" width="4" height="19" rx="1" fill="#1a1a1a"/>
+              </svg>
             </div>
-            
-            <div class="skills-container">
-                <div class="skills-grid">
-                    <div class="skill-category">
-                        <div class="category-icon">
-                            <i class="fas fa-laptop-code"></i>
-                        </div>
-                        <h3 class="category-title">Frontend Development</h3>
-                        
-                        <div class="skills-list">
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <i class="fab fa-react"></i>
-                                    <span>React</span>
-                                </div>
-                                <div class="skill-level">
-                                    <div class="level-bar">
-                                        <div class="level-fill" style="width: 90%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <i class="fab fa-js-square"></i>
-                                    <span>JavaScript</span>
-                                </div>
-                                <div class="skill-level">
-                                    <div class="level-bar">
-                                        <div class="level-fill" style="width: 95%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <i class="fab fa-html5"></i>
-                                    <span>HTML5</span>
-                                </div>
-                                <div class="skill-level">
-                                    <div class="level-bar">
-                                        <div class="level-fill" style="width: 95%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <i class="fab fa-css3-alt"></i>
-                                    <span>CSS3</span>
-                                </div>
-                                <div class="skill-level">
-                                    <div class="level-bar">
-                                        <div class="level-fill" style="width: 90%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="skill-category">
-                        <div class="category-icon">
-                            <i class="fas fa-server"></i>
-                        </div>
-                        <h3 class="category-title">Backend Development</h3>
-                        
-                        <div class="skills-list">
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <i class="fab fa-node-js"></i>
-                                    <span>Node.js</span>
-                                </div>
-                                <div class="skill-level">
-                                    <div class="level-bar">
-                                        <div class="level-fill" style="width: 90%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <i class="fas fa-code"></i>
-                                    <span>Express.js</span>
-                                </div>
-                                <div class="skill-level">
-                                    <div class="level-bar">
-                                        <div class="level-fill" style="width: 85%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <i class="fas fa-database"></i>
-                                    <span>MongoDB</span>
-                                </div>
-                                <div class="skill-level">
-                                    <div class="level-bar">
-                                        <div class="level-fill" style="width: 80%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <i class="fas fa-database"></i>
-                                    <span>PostgreSQL</span>
-                                </div>
-                                <div class="skill-level">
-                                    <div class="level-bar">
-                                        <div class="level-fill" style="width: 75%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="skill-category">
-                        <div class="category-icon">
-                            <i class="fas fa-tools"></i>
-                        </div>
-                        <h3 class="category-title">Tools & Technologies</h3>
-                        
-                        <div class="skills-list">
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <i class="fab fa-git-alt"></i>
-                                    <span>Git</span>
-                                </div>
-                                <div class="skill-level">
-                                    <div class="level-bar">
-                                        <div class="level-fill" style="width: 90%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <i class="fab fa-docker"></i>
-                                    <span>Docker</span>
-                                </div>
-                                <div class="skill-level">
-                                    <div class="level-bar">
-                                        <div class="level-fill" style="width: 80%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <i class="fab fa-aws"></i>
-                                    <span>AWS</span>
-                                </div>
-                                <div class="skill-level">
-                                    <div class="level-bar">
-                                        <div class="level-fill" style="width: 75%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <i class="fas fa-code-branch"></i>
-                                    <span>CI/CD</span>
-                                </div>
-                                <div class="skill-level">
-                                    <div class="level-bar">
-                                        <div class="level-fill" style="width: 70%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+          </div>
+          <div class="project-name">Bank Loan Analysis &amp; Prediction</div>
+          <div class="project-desc">End-to-end ML pipeline for bank loan approval prediction paired with interactive Power BI dashboards.</div>
+          <ul class="project-bullets">
+            <li>Random Forest classifier achieving 97% prediction accuracy</li>
+            <li>Feature engineering and model selection in Python (scikit-learn)</li>
+            <li>Power BI dashboards for non-technical stakeholders</li>
+            <li>Actionable insights to reduce loan default risk</li>
+          </ul>
+          <div class="project-tags">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">Machine Learning</span>
+            <span class="tech-tag">Power BI</span>
+            <span class="tech-tag">scikit-learn</span>
+          </div>
         </div>
-    </section>
 
-    <!-- Experience Section -->
-    <section id="experience" class="experience">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-number">04.</span>
-                <h2 class="section-title">Experience & Achievements</h2>
-                <div class="section-line"></div>
+        <!-- Ambey KPI -->
+        <div class="project-card">
+          <div class="project-card-header">
+            <div class="project-year">2024</div>
+            <div class="project-logo">
+              <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                <rect width="32" height="32" rx="4" fill="#1a4a1a"/>
+                <text x="16" y="21" text-anchor="middle" font-family="Georgia,serif" font-size="16" font-weight="bold" fill="#66cc66">A</text>
+              </svg>
             </div>
-            
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-marker">
-                        <div class="marker-icon">
-                            <i class="fas fa-code"></i>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-card">
-                        <div class="card-header">
-                            <div>
-                                <h3 class="job-title">Software Development Engineer Intern</h3>
-                                <div class="company-info">
-                                    <span class="company">InternPro</span>
-                                    <span class="duration">June 2025 - Present</span>
-                                </div>
-                            </div>
-                            <span class="job-type">Remote</span>
-                        </div>
-                        
-                        <div class="card-content">
-                            <p class="job-description">
-                                Engineering scalable backend systems with Node.js and MongoDB for high-performance 
-                                server-side applications. Developing robust APIs and deploying containerized solutions 
-                                on cloud infrastructure.
-                            </p>
-                            
-                            <div class="achievements">
-                                <h4>Key Achievements:</h4>
-                                <ul>
-                                    <li>Engineered scalable backend systems with Node.js and MongoDB for high-performance applications</li>
-                                    <li>Developed 10+ RESTful APIs with MongoDB integration</li>
-                                    <li>Deployed applications via Docker containers on AWS EC2 instances</li>
-                                    <li>Built comprehensive API documentation and automated testing suites</li>
-                                </ul>
-                            </div>
-                            
-                            <div class="job-tech">
-                                <span class="tech-tag">Node.js</span>
-                                <span class="tech-tag">MongoDB</span>
-                                <span class="tech-tag">Express.js</span>
-                                <span class="tech-tag">Docker</span>
-                                <span class="tech-tag">AWS EC2</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-marker">
-                        <div class="marker-icon">
-                            <i class="fas fa-server"></i>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-card">
-                        <div class="card-header">
-                            <div>
-                                <h3 class="job-title">Backend Developer Intern</h3>
-                                <div class="company-info">
-                                    <span class="company">Fintegic Pvt. Ltd.</span>
-                                    <span class="duration">May 2024 - September 2024</span>
-                                </div>
-                            </div>
-                            <span class="job-type">Remote</span>
-                        </div>
-                        
-                        <div class="card-content">
-                            <p class="job-description">
-                                Designed and implemented comprehensive backend solutions for financial technology applications. 
-                                Focused on creating secure, scalable API endpoints and optimizing system performance.
-                            </p>
-                            
-                            <div class="achievements">
-                                <h4>Key Achievements:</h4>
-                                <ul>
-                                    <li>Enhanced server-side performance by 25% through Node.js and Express.js optimization techniques</li>
-                                    <li>Designed and implemented RESTful API endpoints with robust error handling</li>
-                                    <li>Built secure database schemas and authentication systems</li>
-                                    <li>Implemented caching strategies and database query optimization</li>
-                                </ul>
-                            </div>
-                            
-                            <div class="job-tech">
-                                <span class="tech-tag">Node.js</span>
-                                <span class="tech-tag">Express.js</span>
-                                <span class="tech-tag">MongoDB</span>
-                                <span class="tech-tag">REST APIs</span>
-                                <span class="tech-tag">Authentication</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-marker">
-                        <div class="marker-icon">
-                            <i class="fas fa-trophy"></i>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-card achievement-card">
-                        <div class="card-header">
-                            <div>
-                                <h3 class="job-title">Top 5 Finalist - Binance Blockchain Hackathon</h3>
-                                <div class="company-info">
-                                    <span class="company">Global Competition</span>
-                                    <span class="duration">2023</span>
-                                </div>
-                            </div>
-                            <span class="achievement-badge">Top 5</span>
-                        </div>
-                        
-                        <div class="card-content">
-                            <p class="job-description">
-                                Competed against 200+ teams in a prestigious global blockchain development challenge. 
-                                Secured top 5 position by building innovative DeFi solutions using smart contracts 
-                                and cutting-edge web3 technologies.
-                            </p>
-                            
-                            <div class="achievements">
-                                <h4>Competition Highlights:</h4>
-                                <ul>
-                                    <li>Developed smart contracts for decentralized finance applications</li>
-                                    <li>Implemented advanced tokenomics and yield farming mechanisms</li>
-                                    <li>Created intuitive user interfaces for complex DeFi interactions</li>
-                                    <li>Presented solution to industry experts and venture capitalists</li>
-                                </ul>
-                            </div>
-                            
-                            <div class="job-tech">
-                                <span class="tech-tag">Solidity</span>
-                                <span class="tech-tag">Web3.js</span>
-                                <span class="tech-tag">React</span>
-                                <span class="tech-tag">Ethereum</span>
-                                <span class="tech-tag">DeFi</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-marker">
-                        <div class="marker-icon">
-                            <i class="fab fa-github"></i>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-card">
-                        <div class="card-header">
-                            <div>
-                                <h3 class="job-title">Google Code-In 2019 Contributor</h3>
-                                <div class="company-info">
-                                    <span class="company">Open Source Community</span>
-                                    <span class="duration">2019</span>
-                                </div>
-                            </div>
-                            <span class="job-type">Community</span>
-                        </div>
-                        
-                        <div class="card-content">
-                            <p class="job-description">
-                                Contributed to the global open-source community through Google's prestigious 
-                                Code-In program. Resolved critical bugs and improved code quality across 
-                                multiple high-impact projects used by thousands of developers worldwide.
-                            </p>
-                            
-                            <div class="achievements">
-                                <h4>Key Contributions:</h4>
-                                <ul>
-                                    <li>Resolved 5+ critical bugs in popular open-source projects</li>
-                                    <li>Improved documentation and added comprehensive test coverage</li>
-                                    <li>Collaborated with international development teams</li>
-                                    <li>Gained valuable experience in collaborative software development</li>
-                                </ul>
-                            </div>
-                            
-                            <div class="job-tech">
-                                <span class="tech-tag">JavaScript</span>
-                                <span class="tech-tag">Python</span>
-                                <span class="tech-tag">Java</span>
-                                <span class="tech-tag">Git</span>
-                                <span class="tech-tag">Testing</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-marker">
-                        <div class="marker-icon">
-                            <i class="fas fa-users"></i>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-card achievement-card">
-                        <div class="card-header">
-                            <div>
-                                <h3 class="job-title">Internshala Student Partner</h3>
-                                <div class="company-info">
-                                    <span class="company">Internshala</span>
-                                    <span class="duration">2023-2024</span>
-                                </div>
-                            </div>
-                            <span class="achievement-badge">Top 10%</span>
-                        </div>
-                        
-                        <div class="card-content">
-                            <p class="job-description">
-                                Selected as Student Partner and ranked in top 10% among 1000+ ambassadors nationwide. 
-                                Led campus engagement initiatives and helped connect students with career opportunities.
-                            </p>
-                            
-                            <div class="achievements">
-                                <h4>Key Achievements:</h4>
-                                <ul>
-                                    <li>Ranked in top 10% among 1000+ student ambassadors</li>
-                                    <li>Organized career development workshops and events</li>
-                                    <li>Mentored 50+ students in career planning and skill development</li>
-                                    <li>Built strong network of professionals and industry connections</li>
-                                </ul>
-                            </div>
-                            
-                            <div class="job-tech">
-                                <span class="tech-tag">Leadership</span>
-                                <span class="tech-tag">Event Management</span>
-                                <span class="tech-tag">Mentoring</span>
-                                <span class="tech-tag">Networking</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+          </div>
+          <div class="project-name">Ambey Polymers KPI Dashboard</div>
+          <div class="project-desc">Real-time executive dashboard built during internship to monitor KPIs across 15+ microservices.</div>
+          <ul class="project-bullets">
+            <li>Processed and visualized 10K+ daily transactions</li>
+            <li>Identified bottlenecks that cut turnaround time by 35%</li>
+            <li>Monitored KPIs across 15+ microservices in real-time</li>
+          </ul>
+          <div class="project-tags">
+            <span class="tech-tag">Data Analysis</span>
+            <span class="tech-tag">KPI Monitoring</span>
+            <span class="tech-tag">Process Optimization</span>
+          </div>
         </div>
-    </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-number">05.</span>
-                <h2 class="section-title">Let's Work Together</h2>
-                <div class="section-line"></div>
-            </div>
-            
-            <div class="contact-content">
-                <div class="contact-intro">
-                    <h3>Get In Touch</h3>
-                    <p>
-                        I'm always interested in hearing about new opportunities, especially ambitious 
-                        or large scale projects. But if you just want to say hi, I'd love to hear from you too!
-                    </p>
-                </div>
-                
-                <div class="contact-grid">
-                    <div class="contact-card">
-                        <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div class="contact-info">
-                            <h4>Email</h4>
-                            <p>pulkit.jindal30@gmail.com</p>
-                            <a href="mailto:pulkit.jindal30@gmail.com" class="contact-btn">Send Message</a>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-card">
-                        <div class="contact-icon">
-                            <i class="fas fa-phone"></i>
-                        </div>
-                        <div class="contact-info">
-                            <h4>Phone</h4>
-                            <p>+91-97737-35800</p>
-                            <a href="tel:+919773735800" class="contact-btn">Call Now</a>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-card">
-                        <div class="contact-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div class="contact-info">
-                            <h4>Location</h4>
-                            <p>Delhi, India</p>
-                            <span class="contact-btn disabled">Available Remotely</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="contact-social">
-                    <h4>Follow me on social media</h4>
-                    <div class="social-links">
-                        <a href="https://www.linkedin.com/in/pulkitjindal30/" target="_blank" rel="noopener" class="social-link linkedin">
-                            <i class="fab fa-linkedin"></i>
-                            LinkedIn
-                        </a>
-                        <a href="https://github.com/Pul-kt" target="_blank" rel="noopener" class="social-link github">
-                            <i class="fab fa-github"></i>
-                            GitHub
-                        </a>
-                        <a href="https://leetcode.com/u/_pullkit_jindal/" target="_blank" rel="noopener" class="social-link leetcode">
-                            <i class="fas fa-code"></i>
-                            LeetCode
-                        </a>
-                    </div>
-                </div>
-            </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE: ABOUT
+═══════════════════════════════════════ -->
+<div class="page" id="page-about">
+  <div class="section-wrap">
+    <div class="container">
+      <a class="back-link" href="#" onclick="navigate('home');return false;">← Home</a>
+      <p class="section-label">Background</p>
+      <h2 class="section-title">About Me</h2>
+      <div class="about-grid">
+        <div class="about-bio">
+          <p>I'm a business analyst who enjoys finding <strong>the one number that changes the room</strong>. I care about clear thinking, good frameworks, and outcomes that actually matter.</p>
+          <p>DTU student, Bain intern, and occasional data nerd. Selected for the <strong>McKinsey.org Forward 2025</strong> program and formerly a Google Code-in participant.</p>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-text">
-                    <p>&copy; 2024 Pulkit Jindal. All rights reserved.</p>
-                    <p>Built with ❤️ using vanilla HTML, CSS, and JavaScript</p>
-                </div>
-            </div>
+        <div class="about-facts">
+          <div class="fact-row"><div class="fact-label">Currently</div><div class="fact-value">Analyst Intern @ Bain &amp; Company</div></div>
+          <div class="fact-row"><div class="fact-label">Education</div><div class="fact-value">B.Tech @ DTU · Graduating 2026</div></div>
+          <div class="fact-row"><div class="fact-label">Location</div><div class="fact-value">Delhi, India</div></div>
+          <div class="fact-row"><div class="fact-label">Strengths</div><div class="fact-value">Market Research · Financial Modeling · Data Storytelling</div></div>
+          <div class="fact-row"><div class="fact-label">Tools</div><div class="fact-value">Excel · PowerPoint · Python · Tableau · Power BI</div></div>
         </div>
-    </footer>
+      </div>
 
-    <!-- JavaScript -->
-    <script src="script.js"></script>
+      <!-- Achievements with logos -->
+      <div style="margin-top:3rem;">
+        <p class="section-label">Recognition</p>
+        <h3 style="font-family:'Playfair Display',serif;font-size:var(--fs-xl);font-weight:600;color:var(--ink);margin-bottom:1.5rem;">Notable Programs &amp; Achievements</h3>
+        <div class="achievements-grid">
+
+          <div class="achievement-card">
+            <div class="achievement-logo">
+              <img src="https://logo.clearbit.com/mckinsey.com" alt="McKinsey"
+                onerror="this.style.display='none';this.parentElement.innerHTML='<svg viewBox=\'0 0 32 32\' xmlns=\'http://www.w3.org/2000/svg\'><rect width=\'32\' height=\'32\' rx=\'6\' fill=\'%230057a8\'/><text x=\'16\' y=\'22\' text-anchor=\'middle\' font-family=\'Arial\' font-size=\'16\' font-weight=\'bold\' fill=\'white\'>M</text></svg>'">
+            </div>
+            <div class="achievement-info">
+              <div class="achievement-name">McKinsey.org Forward</div>
+              <div class="achievement-sub">2025 · Leadership Program</div>
+            </div>
+          </div>
+
+          <div class="achievement-card">
+            <div class="achievement-logo">
+              <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="16" cy="16" r="16" fill="#003580"/>
+                <circle cx="16" cy="16" r="13" fill="none" stroke="#c8a84b" stroke-width="1"/>
+                <text x="16" y="13" text-anchor="middle" font-family="serif" font-size="6.5" font-weight="bold" fill="#c8a84b">DTU</text>
+                <text x="16" y="21" text-anchor="middle" font-family="sans-serif" font-size="3.2" fill="#ffffff" letter-spacing="0.3">DELHI TECH UNIV</text>
+              </svg>
+            </div>
+            <div class="achievement-info">
+              <div class="achievement-name">B.Tech — DTU</div>
+              <div class="achievement-sub">2022–2026 · Graduating</div>
+            </div>
+          </div>
+
+          <div class="achievement-card">
+            <div class="achievement-logo">
+              <img src="https://logo.clearbit.com/google.com" alt="Google"
+                onerror="this.style.display='none';this.parentElement.innerHTML='<svg viewBox=\'0 0 32 32\' xmlns=\'http://www.w3.org/2000/svg\'><rect width=\'32\' height=\'32\' rx=\'6\' fill=\'%234285f4\'/><text x=\'16\' y=\'22\' text-anchor=\'middle\' font-family=\'Arial\' font-size=\'16\' font-weight=\'bold\' fill=\'white\'>G</text></svg>'">
+            </div>
+            <div class="achievement-info">
+              <div class="achievement-name">Google Code-in</div>
+              <div class="achievement-sub">Open Source Contributor</div>
+            </div>
+          </div>
+
+          <div class="achievement-card">
+            <div class="achievement-logo">
+              <img src="https://logo.clearbit.com/bain.com" alt="Bain"
+                onerror="this.style.display='none';this.parentElement.innerHTML='<svg viewBox=\'0 0 32 32\' xmlns=\'http://www.w3.org/2000/svg\'><rect width=\'32\' height=\'32\' rx=\'6\' fill=\'%23cc0000\'/><text x=\'16\' y=\'22\' text-anchor=\'middle\' font-family=\'Arial\' font-size=\'16\' font-weight=\'bold\' fill=\'white\'>B</text></svg>'">
+            </div>
+            <div class="achievement-info">
+              <div class="achievement-name">Bain &amp; Company</div>
+              <div class="achievement-sub">Analyst Intern · 2026</div>
+            </div>
+          </div>
+
+          <div class="achievement-card">
+            <div class="achievement-logo">
+              <img src="https://logo.clearbit.com/internshala.com" alt="Internshala"
+                onerror="this.style.display='none';this.parentElement.innerHTML='<svg viewBox=\'0 0 32 32\' xmlns=\'http://www.w3.org/2000/svg\'><rect width=\'32\' height=\'32\' rx=\'6\' fill=\'%2300bcd4\'/><text x=\'16\' y=\'22\' text-anchor=\'middle\' font-family=\'Arial\' font-size=\'14\' font-weight=\'bold\' fill=\'white\'>I</text></svg>'">
+            </div>
+            <div class="achievement-info">
+              <div class="achievement-name">Campus Ambassador</div>
+              <div class="achievement-sub">Internshala · iQOO</div>
+            </div>
+          </div>
+
+          <div class="achievement-card">
+            <div class="achievement-logo">
+              <!-- Mentor badge icon -->
+              <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                <rect width="32" height="32" rx="6" fill="#5c35a0"/>
+                <text x="16" y="21" text-anchor="middle" font-family="Arial" font-size="16">🎓</text>
+              </svg>
+            </div>
+            <div class="achievement-info">
+              <div class="achievement-name">Mentor Head</div>
+              <div class="achievement-sub">STEP DTU · 150+ students</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Timeline -->
+  <div class="section-wrap alt">
+    <div class="container">
+      <p class="section-label">Journey</p>
+      <h2 class="section-title">Timeline</h2>
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <div class="timeline-year">2026</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-header">
+              <div class="timeline-logo">
+                <img src="https://logo.clearbit.com/bain.com" alt="Bain"
+                  onerror="this.style.display='none';this.parentElement.innerHTML='<svg viewBox=\'0 0 24 24\' xmlns=\'http://www.w3.org/2000/svg\'><rect width=\'24\' height=\'24\' rx=\'4\' fill=\'%23cc0000\'/><text x=\'12\' y=\'17\' text-anchor=\'middle\' font-size=\'12\' font-weight=\'bold\' fill=\'white\'>B</text></svg>'">
+              </div>
+              <div class="timeline-title">Bain &amp; Company</div>
+            </div>
+            <div class="timeline-desc">Joined as Analyst Intern in January. Supporting consulting teams on strategic engagements — market sizing, benchmarking, and financial modeling.</div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-year"></div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-header">
+              <div class="timeline-logo">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="12" cy="12" r="12" fill="#003580"/>
+                  <text x="12" y="16" text-anchor="middle" font-family="serif" font-size="7" font-weight="bold" fill="#c8a84b">DTU</text>
+                </svg>
+              </div>
+              <div class="timeline-title">Placement Coordinator</div>
+            </div>
+            <div class="timeline-desc">Managing campus recruitment for the 2026 batch at DTU — coordinating between 2000+ students and 70+ recruiting organizations.</div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-year">2025</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-header">
+              <div class="timeline-logo">
+                <img src="https://logo.clearbit.com/mckinsey.com" alt="McKinsey"
+                  onerror="this.style.display='none';this.parentElement.innerHTML='<svg viewBox=\'0 0 24 24\' xmlns=\'http://www.w3.org/2000/svg\'><rect width=\'24\' height=\'24\' rx=\'4\' fill=\'%230057a8\'/><text x=\'12\' y=\'17\' text-anchor=\'middle\' font-size=\'13\' font-weight=\'bold\' fill=\'white\'>M</text></svg>'">
+              </div>
+              <div class="timeline-title">McKinsey.org Forward</div>
+            </div>
+            <div class="timeline-desc">Selected for the international leadership and professional development program. Strengthened strategic thinking and communication skills.</div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-year"></div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-header">
+              <div class="timeline-logo">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="24" height="24" rx="4" fill="#1e3a5f"/>
+                  <text x="12" y="17" text-anchor="middle" font-family="Georgia,serif" font-size="14" font-weight="bold" fill="#4db8ff">F</text>
+                </svg>
+              </div>
+              <div class="timeline-title">Fintegic Consulting</div>
+            </div>
+            <div class="timeline-desc">Interned as an Analyst — worked on process analysis, data interpretation, and operational workflow improvements for client projects.</div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-year"></div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-header">
+              <div class="timeline-logo">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="24" height="24" rx="4" fill="#5c35a0"/>
+                  <text x="12" y="17" text-anchor="middle" font-size="13">🎓</text>
+                </svg>
+              </div>
+              <div class="timeline-title">Mentor Head @ STEP DTU</div>
+            </div>
+            <div class="timeline-desc">Led the Mentorlink program with 29 mentors supporting 150+ students. 95% satisfaction rating. Ran skill-development workshops for 200+ students.</div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-year">2024</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-header">
+              <div class="timeline-logo">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="24" height="24" rx="4" fill="#1a4a1a"/>
+                  <text x="12" y="17" text-anchor="middle" font-family="Georgia,serif" font-size="13" font-weight="bold" fill="#66cc66">A</text>
+                </svg>
+              </div>
+              <div class="timeline-title">Ambey Polymers</div>
+            </div>
+            <div class="timeline-desc">First internship as a Business Analyst. Analyzed 10K+ daily transactions, cut turnaround time by 35%, built real-time KPI dashboards.</div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-year"></div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-header">
+              <div class="timeline-logo">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="24" height="24" rx="4" fill="#f2c811"/>
+                  <rect x="5" y="14" width="3" height="6" rx="1" fill="#1a1a1a"/>
+                  <rect x="10" y="10" width="3" height="10" rx="1" fill="#1a1a1a"/>
+                  <rect x="15" y="6" width="3" height="14" rx="1" fill="#1a1a1a"/>
+                </svg>
+              </div>
+              <div class="timeline-title">Bank Loan ML Project</div>
+            </div>
+            <div class="timeline-desc">Built a Random Forest classifier at 97% accuracy for loan prediction, paired with interactive Power BI dashboards.</div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-year"></div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-header">
+              <div class="timeline-logo">
+                <img src="https://logo.clearbit.com/internshala.com" alt="Internshala"
+                  onerror="this.style.display='none';this.parentElement.innerHTML='<svg viewBox=\'0 0 24 24\' xmlns=\'http://www.w3.org/2000/svg\'><rect width=\'24\' height=\'24\' rx=\'4\' fill=\'%2300bcd4\'/><text x=\'12\' y=\'17\' text-anchor=\'middle\' font-size=\'12\' font-weight=\'bold\' fill=\'white\'>I</text></svg>'">
+              </div>
+              <div class="timeline-title">Campus Ambassador</div>
+            </div>
+            <div class="timeline-desc">Represented Internshala and iQOO on campus — built communities and led outreach programs.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE: BLOG LIST
+═══════════════════════════════════════ -->
+<div class="page" id="page-blog">
+  <div class="section-wrap">
+    <div class="container">
+      <a class="back-link" href="#" onclick="navigate('home');return false;">← Home</a>
+      <p class="section-label">Writing</p>
+      <h2 class="section-title">Blog</h2>
+      <div class="blog-list">
+        <div class="blog-item" onclick="navigate('blog/bain')">
+          <div>
+            <div class="blog-meta"><span class="blog-category">Consulting · Interviews · Career</span><span class="blog-date">2026</span></div>
+            <div class="blog-title">How to Prepare for Bain Interviews</div>
+            <div class="blog-desc">A complete breakdown of what Bain looks for — structuring cases, driving insights, and how to think like a consultant from day one.</div>
+          </div>
+          <div class="blog-arrow">→</div>
+        </div>
+        <div class="blog-item" onclick="navigate('blog/guesstimates')">
+          <div>
+            <div class="blog-meta"><span class="blog-category">Guesstimates · Consulting · Frameworks</span><span class="blog-date">2026</span></div>
+            <div class="blog-title">Guesstimates — Complete Guide</div>
+            <div class="blog-desc">From market sizing to demand estimation — a structured approach to cracking any guesstimate in consulting and product interviews.</div>
+          </div>
+          <div class="blog-arrow">→</div>
+        </div>
+        <div class="blog-item" onclick="navigate('blog/casestudy')">
+          <div>
+            <div class="blog-meta"><span class="blog-category">Case Study · Consulting · Frameworks</span><span class="blog-date">2026</span></div>
+            <div class="blog-title">Case Study — Complete Guide</div>
+            <div class="blog-desc">Everything you need to crack case interviews — frameworks, communication tips, and how to structure your thinking under pressure.</div>
+          </div>
+          <div class="blog-arrow">→</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     BLOG POSTS
+═══════════════════════════════════════ -->
+<div class="page" id="page-blog/bain">
+  <div class="section-wrap">
+    <div class="container">
+      <a class="back-link" href="#blog" onclick="navigate('blog');return false;">← Back to Blog</a>
+      <div class="post-header">
+        <span class="blog-category">Consulting · Interviews · Career · 2026</span>
+        <h1 class="post-title">How to Prepare for Bain Interviews</h1>
+      </div>
+      <div class="post-body">
+        <p>Preparing for Bain interviews is a multifaceted process, combining company understanding, problem-solving, and strong personal presentation. Bain typically has two rounds that integrate guesstimates, case studies, and resume grilling.</p>
+        <p>First, knowing Bain's culture is vital. Bain assigns you to a <strong>Center of Excellence (COE)</strong>, so research the COE you're applying for. Whether it's Private Equity, TMT, or another, understanding its role will make you more relevant in the interview.</p>
+        <p>Second, your resume is constantly on the table. Bain looks for <strong>leadership</strong> — positions of responsibility that reflect communication and people skills. Be ready to discuss your roles, what you did, and how you led.</p>
+        <p>In the first round, you'll start with an introduction — your background, hobbies, and why you want Bain. Then comes a guesstimate. Validate your approach with the interviewer to ensure alignment before diving deep.</p>
+        <p>In the second round, you'll face a case study. Solve the business problem logically, and then expect deeper questions about your resume. Be prepared to explain your projects, tools like Power BI or Tableau, and what you achieved.</p>
+        <p>Finally, be authentic about why you want Bain. Whether it's the people or the culture, your answer should be personal. Stay updated on openings and network with seniors or on LinkedIn.</p>
+        <div class="post-summary">
+          <div class="post-summary-title">Summary Tips</div>
+          <ol>
+            <li>Research your COE and Bain's culture — know where you're applying.</li>
+            <li>Prepare to discuss leadership experiences — Bain values these.</li>
+            <li>Validate guesstimates — ask the interviewer if you're on track.</li>
+            <li>Be ready to explain your projects and tools in detail.</li>
+            <li>Have a genuine, personal answer for why you want Bain.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page" id="page-blog/guesstimates">
+  <div class="section-wrap">
+    <div class="container">
+      <a class="back-link" href="#blog" onclick="navigate('blog');return false;">← Back to Blog</a>
+      <div class="post-header">
+        <span class="blog-category">Guesstimates · Consulting · Frameworks · 2026</span>
+        <h1 class="post-title">Guesstimates — Complete Guide</h1>
+      </div>
+      <div class="post-body">
+        <p>A guesstimate is an estimation problem where you logically approximate an unknown figure using assumptions and reasoning. Common in consulting and interviews, guesstimates test your <strong>structured thinking</strong>, not exact accuracy. Interviewers want to see how you approach unfamiliar problems, adapt assumptions, and explain your reasoning.</p>
+        <p>In my ZS Associates interview, I was asked how many engineering colleges are in Delhi. I began with baseline numbers. Delhi's population is roughly 3–4 crores. It's crucial to have a broad sense of population — Delhi, India, and typical college sizes — so you avoid unrealistic assumptions.</p>
+        <p>Next, I segmented the population by age — focusing on 17 to 21 years old. This gave me a smaller pool of potential college-goers. I then divided by educational streams. Within science, I isolated non-medical students — those most likely to pursue engineering.</p>
+        <p>From the college-age population, I estimated how many colleges were needed. I used my own college size for reference — about 10,000 students total, with an annual intake of around 2,500 to 3,000. Initially, I overestimated. But I corrected when I remembered not all non-medical students choose engineering. This demonstrated my ability to <strong>adjust assumptions</strong> — something interviewers value more than a perfect number.</p>
+        <p>Ultimately, guesstimates are about thinking creatively and logically. Develop a flexible pattern of problem-solving, not just memorized answers.</p>
+        <div class="post-summary">
+          <div class="post-summary-title">Key Tips</div>
+          <ol>
+            <li>Know baseline numbers: roughly know major populations — India, cities, college sizes.</li>
+            <li>Break down the population: segment by age or relevant criteria to narrow focus.</li>
+            <li>Adjust assumptions: correct yourself when not all groups follow the same path.</li>
+            <li>Explain your reasoning: always justify your assumptions clearly to the interviewer.</li>
+            <li>Practice creatively: focus on unique, out-of-the-box problems after learning the basics.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page" id="page-blog/casestudy">
+  <div class="section-wrap">
+    <div class="container">
+      <a class="back-link" href="#blog" onclick="navigate('blog');return false;">← Back to Blog</a>
+      <div class="post-header">
+        <span class="blog-category">Case Study · Consulting · Frameworks · 2026</span>
+        <h1 class="post-title">Case Study — Complete Guide</h1>
+      </div>
+      <div class="post-body">
+        <p>Case studies present a business problem — often declining profits, market entry decisions, or growth challenges — through charts, figures, and sometimes text. Your job is to analyze the data, diagnose the issue, and recommend a solution.</p>
+        <p>While standard frameworks like breaking down profit drivers help guide you, <strong>no two cases are exactly alike</strong>. Success comes from a mix of structured thinking and flexibility. Resources like SRCC case studies are great, but don't rely on frameworks alone — they offer a starting point, not a script.</p>
+        <p>Begin with a broad diagnosis — are we looking at revenue or costs? But be ready to pivot if the data suggests something different. In a live interview, always <strong>validate your direction</strong> with the interviewer. Ask if you're on track — this ensures alignment. If you're off, adjust early.</p>
+        <p>Finally, ask insightful questions. You won't be given all the data — extract what you need by probing the problem. The quality of your questions signals the depth of your thinking as much as your final answer.</p>
+        <div class="post-summary">
+          <div class="post-summary-title">Summary Tips</div>
+          <ol>
+            <li>Use frameworks as flexible guides, not rigid scripts.</li>
+            <li>Start broad (revenue/cost), but pivot if the data says otherwise.</li>
+            <li>Confirm your approach with the interviewer.</li>
+            <li>Ask sharp questions to fill information gaps.</li>
+            <li>Be adaptable — no two cases are identical.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE: CONTACT
+═══════════════════════════════════════ -->
+<div class="page" id="page-contact">
+  <div class="section-wrap">
+    <div class="container">
+      <a class="back-link" href="#" onclick="navigate('home');return false;">← Home</a>
+      <p class="section-label">Let's talk</p>
+      <h2 class="section-title">Open to internships, collaborations,<br>or just a good conversation.</h2>
+      <div class="contact-grid">
+        <div>
+          <div class="contact-item-label">Email</div>
+          <div class="contact-item-value"><a href="mailto:pulkitjindal@example.com">Email me</a></div>
+        </div>
+        <div>
+          <div class="contact-item-label">Phone</div>
+          <div class="contact-item-value"><a href="tel:+919773735800">+91 97737 35800</a></div>
+        </div>
+        <div>
+          <div class="contact-item-label">LinkedIn</div>
+          <div class="contact-item-value"><a href="https://linkedin.com" target="_blank">linkedin.com ↗</a></div>
+        </div>
+        <div>
+          <div class="contact-item-label">GitHub</div>
+          <div class="contact-item-value"><a href="https://github.com" target="_blank">github.com ↗</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>© 2026 Pulkit Jindal · Delhi, India</footer>
+
+<script>
+const VALID_PAGES = ['home','work','projects','about','blog','blog/bain','blog/guesstimates','blog/casestudy','contact'];
+
+function navigate(page) {
+  window.location.hash = page === 'home' ? '' : page;
+  showPage(page);
+}
+
+function showPage(page) {
+  if (!VALID_PAGES.includes(page)) page = 'home';
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const el = document.getElementById('page-' + page);
+  if (el) { el.classList.add('active'); window.scrollTo(0,0); }
+
+  // Nav active state
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.classList.remove('active');
+    const href = a.getAttribute('href').replace('#','');
+    const top = page.split('/')[0];
+    if (href === top || (href === '' && page === 'home')) a.classList.add('active');
+  });
+
+  // Title
+  const titles = {
+    home:'Pulkit Jindal', work:'Work Experience — Pulkit Jindal',
+    projects:'Projects — Pulkit Jindal', about:'About — Pulkit Jindal',
+    blog:'Blog — Pulkit Jindal', 'blog/bain':'Bain Interview Prep — Pulkit Jindal',
+    'blog/guesstimates':'Guesstimates Guide — Pulkit Jindal',
+    'blog/casestudy':'Case Study Guide — Pulkit Jindal',
+    contact:'Contact — Pulkit Jindal',
+  };
+  document.title = titles[page] || 'Pulkit Jindal';
+}
+
+function getPageFromHash() {
+  return window.location.hash.replace('#','').trim() || 'home';
+}
+
+window.addEventListener('hashchange', () => showPage(getPageFromHash()));
+showPage(getPageFromHash());
+
+function toggleTheme() {
+  const html = document.documentElement;
+  const isDark = html.getAttribute('data-theme') === 'dark';
+  html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+  document.getElementById('toggle-icon').textContent = isDark ? '🌙' : '☀️';
+  document.getElementById('toggle-label').textContent = isDark ? 'Dark' : 'Light';
+}
+</script>
 </body>
 </html>
